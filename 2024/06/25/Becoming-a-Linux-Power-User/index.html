@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Chapter 1: Using the Shell Chapter 2: Moving Around the Filesystem Chapter 3: Working with Text Files Chapter 4: Managing Running Processes Chapter 5: Writing Simple Shell Scripts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Becoming a Linux Power User">
+<meta property="og:url" content="http://example.com/2024/06/25/Becoming-a-Linux-Power-User/index.html">
+<meta property="og:site_name" content="How Are You Today?">
+<meta property="og:description" content="Chapter 1: Using the Shell Chapter 2: Moving Around the Filesystem Chapter 3: Working with Text Files Chapter 4: Managing Running Processes Chapter 5: Writing Simple Shell Scripts">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-25T11:27:00.000Z">
+<meta property="article:modified_time" content="2024-06-25T12:50:45.284Z">
+<meta property="article:author" content="xianzhan-yang">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/06/25/Becoming-a-Linux-Power-User/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Becoming a Linux Power User | How Are You Today?</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">How Are You Today?</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/25/Becoming-a-Linux-Power-User/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xianzhan-yang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="How Are You Today?">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Becoming a Linux Power User
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-06-25 19:27:00 / Modified: 20:50:45" itemprop="dateCreated datePublished" datetime="2024-06-25T19:27:00+08:00">2024-06-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux-Bible/" itemprop="url" rel="index"><span itemprop="name">Linux Bible</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li>Chapter 1: Using the Shell</li>
+<li>Chapter 2: Moving Around the Filesystem</li>
+<li>Chapter 3: Working with Text Files</li>
+<li>Chapter 4: Managing Running Processes</li>
+<li>Chapter 5: Writing Simple Shell Scripts<span id="more"></span></li>
+</ul>
+<h2 id="Chatper-1-Using-the-Shell"><a href="#Chatper-1-Using-the-Shell" class="headerlink" title="Chatper 1 Using the Shell"></a>Chatper 1 Using the Shell</h2><h3 id="⌛-About-Shells-and-Terminal-Windows"><a href="#⌛-About-Shells-and-Terminal-Windows" class="headerlink" title="⌛ About Shells and Terminal Windows"></a>⌛ About Shells and Terminal Windows</h3><ul>
+<li>Using the shell prompt</li>
+<li>Using the Terminal window</li>
+<li>Using the virtual consoles</li>
+</ul>
+<h3 id="⌛-Running-Commands"><a href="#⌛-Running-Commands" class="headerlink" title="⌛ Running Commands"></a>⌛ Running Commands</h3><ul>
+<li>Understanding command syntax</li>
+<li>Locaing commands</li>
+</ul>
+<h3 id="⏳-Recalling-Commands-Using-Command-History"><a href="#⏳-Recalling-Commands-Using-Command-History" class="headerlink" title="⏳ Recalling Commands Using Command History"></a>⏳ Recalling Commands Using Command History</h3><ul>
+<li>Command-line editing</li>
+<li>Command-line completion</li>
+<li>Command-line recall</li>
+</ul>
+<h4 id="Command-line-editing"><a href="#Command-line-editing" class="headerlink" title="Command-line editing"></a>Command-line editing</h4><p><strong>Keystrokes for Navigating Command Lines</strong></p>
+<table>
+<thead>
+<tr>
+<th>keystroke</th>
+<th>Full Name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+F</td>
+<td>Charater forward</td>
+<td>Go forward one character</td>
+</tr>
+<tr>
+<td>Ctrl+B</td>
+<td>Charater backward</td>
+<td>Go backward one character</td>
+</tr>
+<tr>
+<td>Alt+F</td>
+<td>Word forward</td>
+<td>Go forward one word</td>
+</tr>
+<tr>
+<td>Alt+B</td>
+<td>Word backward</td>
+<td>Go backward one word</td>
+</tr>
+<tr>
+<td>Ctrl+A</td>
+<td>Beginning of line</td>
+<td>Go to the beginning of the current line</td>
+</tr>
+<tr>
+<td>Ctrl+E</td>
+<td>End of line</td>
+<td>Go to the end of the line</td>
+</tr>
+</tbody></table>
+<h4 id="Command-line-completion"><a href="#Command-line-completion" class="headerlink" title="Command-line completion"></a>Command-line completion</h4><h4 id="Command-line-recall"><a href="#Command-line-recall" class="headerlink" title="Command-line recall"></a>Command-line recall</h4><h3 id="⏳-Connecting-and-Expanding-Commands"><a href="#⏳-Connecting-and-Expanding-Commands" class="headerlink" title="⏳ Connecting and Expanding Commands"></a>⏳ Connecting and Expanding Commands</h3><ul>
+<li>Piping between commands (|)</li>
+<li>Sequential commands (;)</li>
+<li>Background commands (&amp;)</li>
+<li>Expanding commands (“”)</li>
+<li>Expanding arithmetic expressions ($)</li>
+<li>Expanding variables ($[],$())</li>
+</ul>
+<h3 id="⏳-Using-Shell-Variables"><a href="#⏳-Using-Shell-Variables" class="headerlink" title="⏳ Using Shell Variables"></a>⏳ Using Shell Variables</h3><ul>
+<li>Creating and using aliases</li>
+<li>Exiting the shell</li>
+</ul>
+<h3 id="⏳-Creating-Your-Shell-Environment"><a href="#⏳-Creating-Your-Shell-Environment" class="headerlink" title="⏳ Creating Your Shell Environment"></a>⏳ Creating Your Shell Environment</h3><ul>
+<li>Configuring your shell</li>
+<li>Setting your prompt</li>
+<li>Adding environment variables</li>
+</ul>
+<h3 id="⏳-Getting-Information-about-Commands"><a href="#⏳-Getting-Information-about-Commands" class="headerlink" title="⏳ Getting Information about Commands"></a>⏳ Getting Information about Commands</h3><h2 id="Chapter-2-Moving-Around-the-Filesystem"><a href="#Chapter-2-Moving-Around-the-Filesystem" class="headerlink" title="Chapter 2 Moving Around the Filesystem"></a>Chapter 2 Moving Around the Filesystem</h2><h3 id="⌛-Using-Basic-Filesystem-Commands"><a href="#⌛-Using-Basic-Filesystem-Commands" class="headerlink" title="⌛ Using Basic Filesystem Commands"></a>⌛ Using Basic Filesystem Commands</h3><h3 id="⌛-Using-Metacharacters-and-Operators"><a href="#⌛-Using-Metacharacters-and-Operators" class="headerlink" title="⌛ Using Metacharacters and Operators"></a>⌛ Using Metacharacters and Operators</h3><ul>
+<li>Using file-matching metacharacters (*,?,[])</li>
+<li>Using file-redirecton metacharacters (&gt;,&lt;,2&gt;,&amp;&gt;,&gt;&gt;)</li>
+<li>Using brace expansion characters ({})</li>
+</ul>
+<h3 id="⌛-Listing-Files-and-Directories"><a href="#⌛-Listing-Files-and-Directories" class="headerlink" title="⌛ Listing Files and Directories"></a>⌛ Listing Files and Directories</h3><h3 id="⌛-Understanding-File-Permissions-and-Ownership"><a href="#⌛-Understanding-File-Permissions-and-Ownership" class="headerlink" title="⌛ Understanding File Permissions and Ownership"></a>⌛ Understanding File Permissions and Ownership</h3><ul>
+<li>Changing permissions with chmod (numbers)</li>
+<li>Changing permissions with chmod (letters)</li>
+<li>Setting default file permisiion with umask</li>
+<li>Changing file owership</li>
+</ul>
+<h3 id="⌛-Moving-Copying-and-Removing-Files"><a href="#⌛-Moving-Copying-and-Removing-Files" class="headerlink" title="⌛ Moving, Copying, and Removing Files"></a>⌛ Moving, Copying, and Removing Files</h3><h2 id="Chapter-3-Working-with-Text-Files"><a href="#Chapter-3-Working-with-Text-Files" class="headerlink" title="Chapter 3 Working with Text Files"></a>Chapter 3 Working with Text Files</h2><h3 id="⌛-Editing-Files-with-vim-and-vi"><a href="#⌛-Editing-Files-with-vim-and-vi" class="headerlink" title="⌛ Editing Files with vim and vi"></a>⌛ Editing Files with vim and vi</h3><ul>
+<li>Starting with vi</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chatper-1-Using-the-Shell"><span class="nav-number">1.</span> <span class="nav-text">Chatper 1 Using the Shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8C%9B-About-Shells-and-Terminal-Windows"><span class="nav-number">1.1.</span> <span class="nav-text">⌛ About Shells and Terminal Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8C%9B-Running-Commands"><span class="nav-number">1.2.</span> <span class="nav-text">⌛ Running Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8F%B3-Recalling-Commands-Using-Command-History"><span class="nav-number">1.3.</span> <span class="nav-text">⏳ Recalling Commands Using Command History</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Command-line-editing"><span class="nav-number">1.3.1.</span> <span class="nav-text">Command-line editing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Command-line-completion"><span class="nav-number">1.3.2.</span> <span class="nav-text">Command-line completion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Command-line-recall"><span class="nav-number">1.3.3.</span> <span class="nav-text">Command-line recall</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8F%B3-Connecting-and-Expanding-Commands"><span class="nav-number">1.4.</span> <span class="nav-text">⏳ Connecting and Expanding Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8F%B3-Using-Shell-Variables"><span class="nav-number">1.5.</span> <span class="nav-text">⏳ Using Shell Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8F%B3-Creating-Your-Shell-Environment"><span class="nav-number">1.6.</span> <span class="nav-text">⏳ Creating Your Shell Environment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8F%B3-Getting-Information-about-Commands"><span class="nav-number">1.7.</span> <span class="nav-text">⏳ Getting Information about Commands</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2-Moving-Around-the-Filesystem"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2 Moving Around the Filesystem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8C%9B-Using-Basic-Filesystem-Commands"><span class="nav-number">2.1.</span> <span class="nav-text">⌛ Using Basic Filesystem Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8C%9B-Using-Metacharacters-and-Operators"><span class="nav-number">2.2.</span> <span class="nav-text">⌛ Using Metacharacters and Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8C%9B-Listing-Files-and-Directories"><span class="nav-number">2.3.</span> <span class="nav-text">⌛ Listing Files and Directories</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8C%9B-Understanding-File-Permissions-and-Ownership"><span class="nav-number">2.4.</span> <span class="nav-text">⌛ Understanding File Permissions and Ownership</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8C%9B-Moving-Copying-and-Removing-Files"><span class="nav-number">2.5.</span> <span class="nav-text">⌛ Moving, Copying, and Removing Files</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-Working-with-Text-Files"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3 Working with Text Files</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8C%9B-Editing-Files-with-vim-and-vi"><span class="nav-number">3.1.</span> <span class="nav-text">⌛ Editing Files with vim and vi</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xianzhan-yang"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xianzhan-yang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xianzhan-yang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xianzhan-yang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xianzhan-yang</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
