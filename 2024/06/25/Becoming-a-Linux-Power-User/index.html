@@ -28,7 +28,7 @@
 <meta property="og:description" content="Chapter 1: Using the Shell Chapter 2: Moving Around the Filesystem Chapter 3: Working with Text Files Chapter 4: Managing Running Processes Chapter 5: Writing Simple Shell Scripts">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-06-25T11:27:00.000Z">
-<meta property="article:modified_time" content="2024-06-30T16:53:52.499Z">
+<meta property="article:modified_time" content="2024-07-01T16:05:53.640Z">
 <meta property="article:author" content="xianzhan-yang">
 <meta name="twitter:card" content="summary">
 
@@ -185,7 +185,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-07-01 00:53:52" itemprop="dateModified" datetime="2024-07-01T00:53:52+08:00">2024-07-01</time>
+                <time title="Modified: 2024-07-02 00:05:53" itemprop="dateModified" datetime="2024-07-02T00:05:53+08:00">2024-07-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -373,12 +373,12 @@
 <h4 id="Command-line-recall"><a href="#Command-line-recall" class="headerlink" title="Command-line recall"></a>Command-line recall</h4><ul>
 <li>!n Run command number: Replace the n with the number of the command line and that line is run</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ history</span><br><span class="line">    1  clear</span><br><span class="line">    2  history</span><br><span class="line">[yang@arch ~] $ !2</span><br><span class="line">history</span><br><span class="line">    1  clear</span><br><span class="line">    2  history</span><br><span class="line">    3  history</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ history</span><br><span class="line">    1  clear</span><br><span class="line">    2  history</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ !2</span><br><span class="line">history</span><br><span class="line">    1  clear</span><br><span class="line">    2  history</span><br><span class="line">    3  history</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>!!-!! Run previous command: Runs the previous command line</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ history</span><br><span class="line">    1  clear</span><br><span class="line">    2  clear</span><br><span class="line">    3  history</span><br><span class="line">[yang@arch ~] $ !!</span><br><span class="line">history</span><br><span class="line">    1  clear</span><br><span class="line">    2  clear</span><br><span class="line">    3  history</span><br><span class="line">    4  history</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ history</span><br><span class="line">    1  clear</span><br><span class="line">    2  clear</span><br><span class="line">    3  history</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ !!</span><br><span class="line">history</span><br><span class="line">    1  clear</span><br><span class="line">    2  clear</span><br><span class="line">    3  history</span><br><span class="line">    4  history</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>!?string-? Run command containing string: This runs the most recent command that contains a particular string of characters</li>
@@ -386,23 +386,437 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ !?hi?</span><br><span class="line">history</span><br><span class="line">    1  clear</span><br><span class="line">    2  history</span><br><span class="line">    3  history</span><br><span class="line">    4  history</span><br></pre></td></tr></table></figure>
 
 <h3 id="⏳-Connecting-and-Expanding-Commands"><a href="#⏳-Connecting-and-Expanding-Commands" class="headerlink" title="⏳ Connecting and Expanding Commands"></a>⏳ Connecting and Expanding Commands</h3><ul>
-<li>Piping between commands (|)</li>
-<li>Sequential commands (;)</li>
-<li>Background commands (&amp;)</li>
-<li>Expanding commands (“”)</li>
-<li>Expanding arithmetic expressions ($)</li>
-<li>Expanding variables ($[],$())</li>
+<li>Piping between commands (|): The pipe metacharacter connects the output of from one command to the input of another command.</li>
 </ul>
-<h3 id="⏳-Using-Shell-Variables"><a href="#⏳-Using-Shell-Variables" class="headerlink" title="⏳ Using Shell Variables"></a>⏳ Using Shell Variables</h3><ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ cat /etc/passwd | sort</span><br><span class="line">avahi:x:972:972:Avahi mDNS/DNS-SD daemon:/:/usr/bin/nologin</span><br><span class="line">bin:x:1:1::/:/usr/bin/nologin</span><br><span class="line">daemon:x:2:2::/:/usr/bin/nologin</span><br><span class="line">dbus:x:81:81:System Message Bus:/:/usr/bin/nologin</span><br><span class="line">dhcpcd:x:973:973:dhcpcd privilege separation:/:/usr/bin/nologin</span><br><span class="line">ftp:x:14:11::/srv/ftp:/usr/bin/nologin</span><br><span class="line">git:x:970:970:git daemon user:/:/usr/bin/git-shell</span><br><span class="line">http:x:33:33::/srv/http:/usr/bin/nologin</span><br><span class="line">lightdm:x:971:971:Light Display Manager:/var/lib/lightdm:/usr/bin/nologin</span><br><span class="line">mail:x:8:12::/var/spool/mail:/usr/bin/nologin</span><br><span class="line">nobody:x:65534:65534:Kernel Overflow User:/:/usr/bin/nologin</span><br><span class="line">polkitd:x:102:102:User for polkitd:/:/usr/bin/nologin</span><br><span class="line">root:x:0:0::/root:/usr/bin/bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Sequential commands (;): Sometimes, you may want a sequence of commands to run, with one command completing before the next command begins.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls .; cd Projects</span><br><span class="line">Downloads  Pictures  Projects  Software</span><br><span class="line"></span><br><span class="line">[yang@arch Projects] $</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Background commands (&amp;): Some commands can take a while to complete.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch Projects] $ dhcpcd &amp;</span><br><span class="line">[2] 1948</span><br><span class="line">[1]   Exit 127                job</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Expanding commands ($(command) or <code>command</code>): With command substitution, you can have the output of a command interpreted by the shell instead of by the command itself.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ echo $(date)</span><br><span class="line">Mon Jul 1 10:35:20 PM CST 2024</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ echo $date</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ echo `date`</span><br><span class="line">Mon Jul 1 10:35:45 PM CST 2024</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Expanding arithmetic expressions ($[expression] or $(expression)): Sometimes, you want to pass arithmetic results to a command.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ echo &quot;we get together for $[2024-2019] years&quot;</span><br><span class="line">we get together for 5 years</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ echo &quot;There are $(ls | wc -w) files in this directory.&quot;</span><br><span class="line">There are 4 files in this directory.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Expanding variables: Variables that store information within the shell can be expanded using the dollar sign($) metacharacter.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -l $BASH</span><br><span class="line">-rwxr-xr-x 1 root root 1112880 Jan 16 18:48 /usr/bin/bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="⏳-Using-Shell-Variables"><a href="#⏳-Using-Shell-Variables" class="headerlink" title="⏳ Using Shell Variables"></a>⏳ Using Shell Variables</h3><p>The shell itself stores information that may be useful to the user’s shell session in what are called variables.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ echo $USER</span><br><span class="line">yang</span><br></pre></td></tr></table></figure>
+
+<p><strong>Common Shell Enviroment Variables</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BASH</td>
+<td>This contains the full pathname of the bash command</td>
+</tr>
+<tr>
+<td>BASH_VERSION</td>
+<td>This is a number representing the current version of the bash command</td>
+</tr>
+<tr>
+<td>EUID</td>
+<td>This is the effective user ID number of the current user</td>
+</tr>
+<tr>
+<td>FCEDIT</td>
+<td>If set, this variable indicates the text editor used by the fc command to edit history commands</td>
+</tr>
+<tr>
+<td>HISTFILE</td>
+<td>This is the location of your history file</td>
+</tr>
+<tr>
+<td>HISTFILESIZE</td>
+<td>This is the number of history entires that can be sotred</td>
+</tr>
+<tr>
+<td>HISTCMD</td>
+<td>This returns the number of the current command in the history list</td>
+</tr>
+<tr>
+<td>HOME</td>
+<td>This is your home directory</td>
+</tr>
+<tr>
+<td>HOSTTYPE</td>
+<td>This is a value that describes the computer architecture on which the Linux system is running</td>
+</tr>
+<tr>
+<td>MAIL</td>
+<td>This the location of your mailbox file</td>
+</tr>
+<tr>
+<td>OLDPWD</td>
+<td>This is the directory that was the working directory before you changed to the current working directory</td>
+</tr>
+<tr>
+<td>OSTYPE</td>
+<td>This name identifies the current operating system</td>
+</tr>
+<tr>
+<td>PATH</td>
+<td>This is the colon-separated list of directories used to find commands that you type</td>
+</tr>
+<tr>
+<td>PPID</td>
+<td>This is the process ID of the command that started the current shell</td>
+</tr>
+<tr>
+<td>PROMPT_COMMAND</td>
+<td>This can be set to a command name that is run each time before your shell promptis displayed</td>
+</tr>
+<tr>
+<td>PS1</td>
+<td>This sets the value of your shell prompt</td>
+</tr>
+<tr>
+<td>PWD</td>
+<td>This is the directory that is assigned as your current directory</td>
+</tr>
+<tr>
+<td>RANDOM</td>
+<td>Accessing this variable causes a random number to be generated</td>
+</tr>
+<tr>
+<td>SECONDS</td>
+<td>This is the number of seconds since the time the shell was started</td>
+</tr>
+<tr>
+<td>SHLVL</td>
+<td>This the number of shell levels associated with the current shell session</td>
+</tr>
+<tr>
+<td>TMOUT</td>
+<td>This can be set to a number representing the number of seconds the shell can be idle without receiving input</td>
+</tr>
+</tbody></table>
+<ul>
 <li>Creating and using aliases</li>
-<li>Exiting the shell</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ alias p=&#x27;pwd ; ls -CF&#x27;</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ p</span><br><span class="line">/home/yang</span><br><span class="line">Downloads/  Pictures/  Projects/  Software/</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ unalias p</span><br><span class="line">[yang@arch ~] $ p</span><br><span class="line">bash: p: command not found</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Exiting the shell: To exit the shell when you are finished, type <strong>exit</strong> or press <strong>Ctrl+D</strong>.</li>
 </ul>
 <h3 id="⏳-Creating-Your-Shell-Environment"><a href="#⏳-Creating-Your-Shell-Environment" class="headerlink" title="⏳ Creating Your Shell Environment"></a>⏳ Creating Your Shell Environment</h3><ul>
 <li>Configuring your shell</li>
+</ul>
+<p><strong>Bash Configuration Files</strong></p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;etc&#x2F;profile</td>
+<td>This sets up user environment information for every user</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;bashrc</td>
+<td>This executes for every user who runs the bash shell each time a bash shell is opened</td>
+</tr>
+<tr>
+<td>~&#x2F;.bash_profile</td>
+<td>This is used by each user to enter information that is specific to his or her use of the shell</td>
+</tr>
+<tr>
+<td>~&#x2F;.bashrc</td>
+<td>This contains the information that is specific to your bash shells</td>
+</tr>
+<tr>
+<td>~&#x2F;.bash_logout</td>
+<td>This executes each time you log out</td>
+</tr>
+</tbody></table>
+<ul>
 <li>Setting your prompt</li>
+</ul>
+<p><strong>CHaracters to Add Information to Bash Prompt</strong></p>
+<table>
+<thead>
+<tr>
+<th>Special Character</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>!</td>
+<td>This shows the current command history number</td>
+</tr>
+<tr>
+<td>#</td>
+<td>This shows the command number of the current command</td>
+</tr>
+<tr>
+<td>$</td>
+<td>This shows the user prompt($) or root prompt(#),depending on which type of user you are</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>This show only the current working directory base name</td>
+</tr>
+<tr>
+<td>[</td>
+<td>This precedes a sequence of nonprinting characters</td>
+</tr>
+<tr>
+<td>]</td>
+<td>This follows a sequence of nonprinting characters</td>
+</tr>
+<tr>
+<td>\</td>
+<td>This shows a backslash</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>This displays the day name, month, and day number of the current date</td>
+</tr>
+<tr>
+<td>\h</td>
+<td>This shows the hostname of the computer running the shell</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>This causes a newline to occur</td>
+</tr>
+<tr>
+<td>\nnn</td>
+<td>This shows the character that relates to the octal number replacing nnn</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>This displays the current shell name</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>This prints the current time in hours, minutes, and seconds</td>
+</tr>
+<tr>
+<td>\u</td>
+<td>This prints your current username</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>This displays the full path to the current working directory</td>
+</tr>
+</tbody></table>
+<ul>
 <li>Adding environment variables</li>
 </ul>
-<h3 id="⏳-Getting-Information-about-Commands"><a href="#⏳-Getting-Information-about-Commands" class="headerlink" title="⏳ Getting Information about Commands"></a>⏳ Getting Information about Commands</h3><h2 id="Chapter-2-Moving-Around-the-Filesystem"><a href="#Chapter-2-Moving-Around-the-Filesystem" class="headerlink" title="Chapter 2 Moving Around the Filesystem"></a>Chapter 2 Moving Around the Filesystem</h2><h3 id="⌛-Using-Basic-Filesystem-Commands"><a href="#⌛-Using-Basic-Filesystem-Commands" class="headerlink" title="⌛ Using Basic Filesystem Commands"></a>⌛ Using Basic Filesystem Commands</h3><h3 id="⌛-Using-Metacharacters-and-Operators"><a href="#⌛-Using-Metacharacters-and-Operators" class="headerlink" title="⌛ Using Metacharacters and Operators"></a>⌛ Using Metacharacters and Operators</h3><ul>
+<p>You might want to consider adding a few environment variables to your .bashrc file.</p>
+<ul>
+<li><p>TMOUT: This sets how long the shell can be inactive before bash automatically exits.</p>
+</li>
+<li><p>PATH: As described earlier, the PATH variable sets the directories that are searched for the commands that you use.</p>
+</li>
+<li><p>WHATEVER: You can create your own environment variables to provide shortcuts in your work.</p>
+</li>
+</ul>
+<h3 id="⏳-Getting-Information-about-Commands"><a href="#⏳-Getting-Information-about-Commands" class="headerlink" title="⏳ Getting Information about Commands"></a>⏳ Getting Information about Commands</h3><ul>
+<li>Check the PATH: Type <strong>echo $PATH</strong>.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ echo $PATH</span><br><span class="line">/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Use the help command: Some commands are built into the shell, so they do not appear in a directory. The help command lists those commands and shows options available with each of them.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ help | less</span><br><span class="line">GNU bash, version 5.2.26(1)-release (x86_64-pc-linux-gnu)</span><br><span class="line">These shell commands are defined internally.  Type `help&#x27; to see this list.</span><br><span class="line">Type `help name&#x27; to find out more about the function `name&#x27;.</span><br><span class="line">Use `info bash&#x27; to find out more about the shell in general.</span><br><span class="line">Use `man -k&#x27; or `info&#x27; to find out more about commands not in this list.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Use –help with the command: Many commands include a –help option that you can use to get information about how the command is used.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls --help</span><br><span class="line">Usage: ls [OPTION]... [FILE]...</span><br><span class="line">List information about the FILEs (the current directory by default).</span><br><span class="line">Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Use the info command: The info command is another tool for displaying information about command from the shell.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ info ls</span><br><span class="line">Next: dir invocation,  Up: Directory listing</span><br><span class="line"></span><br><span class="line">10.1 ‘ls’: List directory contents</span><br><span class="line">==================================</span><br><span class="line"></span><br><span class="line">The ‘ls’ program lists information about files (of any type, including</span><br><span class="line">directories).  Options and file arguments can be intermixed arbitrarily,</span><br><span class="line">as usual.  Later options override earlier options that are incompatible.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Use the man command: To learn more about a particular command, enter man command.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ man ls</span><br><span class="line">LS(1)                           User Commands                           LS(1)</span><br><span class="line"></span><br><span class="line">NAME</span><br><span class="line">       ls - list directory contents</span><br><span class="line"></span><br><span class="line">SYNOPSIS</span><br><span class="line">       ls [OPTION]... [FILE]...</span><br></pre></td></tr></table></figure>
+
+<p><strong>Manual Page Sections</strong></p>
+<table>
+<thead>
+<tr>
+<th>Section Number</th>
+<th>Section Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>User Commands</td>
+<td>Commands that can be run from the shell by a regular user</td>
+</tr>
+<tr>
+<td>2</td>
+<td>System Calls</td>
+<td>Programming functions used within an application to make calls to the kernel</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C Library Functions</td>
+<td>Programming functions that provide interfaces to specific programming libraries</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Devices and Special Files</td>
+<td>Filesystem nodes that represent hardware devices</td>
+</tr>
+<tr>
+<td>5</td>
+<td>File Formats and Conventions</td>
+<td>Types of files or specific configuration files</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Games</td>
+<td>Games available on the system</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Miscellaneous</td>
+<td>Overviews of topics such as protocols,filesystems,character set standards, and so on</td>
+</tr>
+<tr>
+<td>8</td>
+<td>System Administration Tools and Daemons</td>
+<td>Commands that require root or other administrative privileges to use</td>
+</tr>
+</tbody></table>
+<h2 id="Chapter-2-Moving-Around-the-Filesystem"><a href="#Chapter-2-Moving-Around-the-Filesystem" class="headerlink" title="Chapter 2 Moving Around the Filesystem"></a>Chapter 2 Moving Around the Filesystem</h2><p><strong>The Linux filesystem is organized as a hierarchy of directories</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;bin</td>
+<td>Contains command Linux user commands, such as ls,sort,date,and chmod</td>
+</tr>
+<tr>
+<td>&#x2F;boot</td>
+<td>Has the bootable Linux kernel, initial RAM disk, and boot loader configuration files(GRUB)</td>
+</tr>
+<tr>
+<td>&#x2F;dev</td>
+<td>Contains files representing access points to devices on your systems</td>
+</tr>
+<tr>
+<td>&#x2F;etc</td>
+<td>Contains administrative configuration files</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>Contains directories assigned to each regular user with a login account</td>
+</tr>
+<tr>
+<td>&#x2F;media</td>
+<td>Provides a standard location for automounting devices</td>
+</tr>
+<tr>
+<td>&#x2F;lib</td>
+<td>Contains shared libraries needed by applications in &#x2F;bin and &#x2F;sbin to boot the system</td>
+</tr>
+<tr>
+<td>&#x2F;mnt</td>
+<td>A common mount point for many devices before it was supplanted by the standard &#x2F;media directory</td>
+</tr>
+<tr>
+<td>misc</td>
+<td>A directory sometimes used to automount filesystems upon request</td>
+</tr>
+<tr>
+<td>&#x2F;opt</td>
+<td>Directory structure available to store add-on application software</td>
+</tr>
+<tr>
+<td>&#x2F;proc</td>
+<td>Contains information about system resources</td>
+</tr>
+<tr>
+<td>&#x2F;root</td>
+<td>Represents the root user’s home directory</td>
+</tr>
+<tr>
+<td>&#x2F;sbin</td>
+<td>Contains administrative commands and daemon processes</td>
+</tr>
+<tr>
+<td>&#x2F;sys</td>
+<td>Contains parameters for such things as tuning block storage and managing cgroups</td>
+</tr>
+<tr>
+<td>&#x2F;tmp</td>
+<td>Contains temporary files used by applications</td>
+</tr>
+<tr>
+<td>&#x2F;usr</td>
+<td>Contains user documentation, games,graphical files,libraries,and a variety of other commands and files that are not needed during the boot process</td>
+</tr>
+<tr>
+<td>&#x2F;var</td>
+<td>Contains directories of data used by various applications</td>
+</tr>
+</tbody></table>
+<h3 id="⌛-Using-Basic-Filesystem-Commands"><a href="#⌛-Using-Basic-Filesystem-Commands" class="headerlink" title="⌛ Using Basic Filesystem Commands"></a>⌛ Using Basic Filesystem Commands</h3><p><strong>Commands to Create and Use Files</strong></p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd</td>
+<td>Changes to another directory</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Prints the name of the current(or present) working directory</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>Creates a directory</td>
+</tr>
+<tr>
+<td>chmod</td>
+<td>Changes the permission on a file or directory</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>Lists the contents of a directory</td>
+</tr>
+</tbody></table>
+<h3 id="⌛-Using-Metacharacters-and-Operators"><a href="#⌛-Using-Metacharacters-and-Operators" class="headerlink" title="⌛ Using Metacharacters and Operators"></a>⌛ Using Metacharacters and Operators</h3><ul>
 <li>Using file-matching metacharacters (*,?,[])</li>
 <li>Using file-redirecton metacharacters (&gt;,&lt;,2&gt;,&amp;&gt;,&gt;&gt;)</li>
 <li>Using brace expansion characters ({})</li>
