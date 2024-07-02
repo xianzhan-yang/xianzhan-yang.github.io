@@ -28,7 +28,7 @@
 <meta property="og:description" content="Chapter 1: Using the Shell Chapter 2: Moving Around the Filesystem Chapter 3: Working with Text Files Chapter 4: Managing Running Processes Chapter 5: Writing Simple Shell Scripts">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-06-25T11:27:00.000Z">
-<meta property="article:modified_time" content="2024-07-01T16:05:53.640Z">
+<meta property="article:modified_time" content="2024-07-02T15:53:22.787Z">
 <meta property="article:author" content="xianzhan-yang">
 <meta name="twitter:card" content="summary">
 
@@ -185,7 +185,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-07-02 00:05:53" itemprop="dateModified" datetime="2024-07-02T00:05:53+08:00">2024-07-02</time>
+                <time title="Modified: 2024-07-02 23:53:22" itemprop="dateModified" datetime="2024-07-02T23:53:22+08:00">2024-07-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -818,22 +818,167 @@
 </tbody></table>
 <h3 id="⌛-Using-Metacharacters-and-Operators"><a href="#⌛-Using-Metacharacters-and-Operators" class="headerlink" title="⌛ Using Metacharacters and Operators"></a>⌛ Using Metacharacters and Operators</h3><ul>
 <li>Using file-matching metacharacters (*,?,[])</li>
+</ul>
+<ul>
+<li>: Matches any number of characters<br>? : Matches any one characters<br>[…] : Matches any one of the characters between the brackets, which can include a hyphenseparated range of letters or numbers</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls P*</span><br><span class="line">Pictures:</span><br><span class="line">1.png</span><br><span class="line"></span><br><span class="line">Projects:</span><br><span class="line">Github  MyBlog</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ ls Pro?????</span><br><span class="line">Github  MyBlog</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ ls [P-Z]*</span><br><span class="line">Pictures:</span><br><span class="line">1.png</span><br><span class="line"></span><br><span class="line">Projects:</span><br><span class="line">Github  MyBlog</span><br><span class="line"></span><br><span class="line">Software:</span><br><span class="line">Paru</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>Using file-redirecton metacharacters (&gt;,&lt;,2&gt;,&amp;&gt;,&gt;&gt;)</li>
+</ul>
+<p>&lt; : Directs the contents of a file to the command.</p>
+<blockquote>
+<p>: Directs the standard output of a command to a file.<br>2&gt; : Directs standard error to the file.<br>&amp;&gt; : Directs both standard output and standard error to the file.</p>
+<blockquote>
+<p>: Directs the output of a command to a file.</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ less &lt; .npmrc</span><br><span class="line">prefix=~/.npm-global</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ ls &gt; test</span><br><span class="line">[yang@arch ~] $ cat test</span><br><span class="line">Downloads</span><br><span class="line">Pictures</span><br><span class="line">Projects</span><br><span class="line">Software</span><br><span class="line">test</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ cat date 2&gt; error</span><br><span class="line">[yang@arch ~] $ cat error</span><br><span class="line">cat: date: No such file or directory</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ cat date &gt; right</span><br><span class="line">cat: date: No such file or directory</span><br><span class="line">[yang@arch ~] $ cat right</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ echo date &gt; right</span><br><span class="line">[yang@arch ~] $ cat right</span><br><span class="line">date</span><br><span class="line">[yang@arch ~] $ echo date1 &gt;&gt; right</span><br><span class="line">[yang@arch ~] $ cat right</span><br><span class="line">date</span><br><span class="line">date1</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>Using brace expansion characters ({})</li>
 </ul>
-<h3 id="⌛-Listing-Files-and-Directories"><a href="#⌛-Listing-Files-and-Directories" class="headerlink" title="⌛ Listing Files and Directories"></a>⌛ Listing Files and Directories</h3><h3 id="⌛-Understanding-File-Permissions-and-Ownership"><a href="#⌛-Understanding-File-Permissions-and-Ownership" class="headerlink" title="⌛ Understanding File Permissions and Ownership"></a>⌛ Understanding File Permissions and Ownership</h3><ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ touch nihao&#123;1,2,3,4&#125;</span><br><span class="line">[yang@arch ~] $ ls</span><br><span class="line">Downloads  nihao2  nihao4    Projects  Software</span><br><span class="line">nihao1     nihao3  Pictures  right</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ rm nihao&#123;1,2,3,4&#125;</span><br><span class="line">[yang@arch ~] $ ls</span><br><span class="line">Downloads  Pictures  Projects  right  Software</span><br></pre></td></tr></table></figure>
+
+<h3 id="⌛-Listing-Files-and-Directories"><a href="#⌛-Listing-Files-and-Directories" class="headerlink" title="⌛ Listing Files and Directories"></a>⌛ Listing Files and Directories</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -al</span><br><span class="line">total 144</span><br><span class="line">drwx------ 15 yang yang  4096 Jul  2 22:03 .</span><br><span class="line">drwxr-xr-x  3 root root  4096 Jun 24 15:55 ..</span><br><span class="line">-rw-------  1 yang yang  6033 Jul  2 20:16 .bash_history</span><br><span class="line">-rw-r--r--  1 yang yang    21 Jan 16 18:48 .bash_logout</span><br><span class="line">-rw-r--r--  1 yang yang    57 Jan 16 18:48 .bash_profile</span><br><span class="line">-rw-r--r--  1 yang yang   173 Jul  2 20:00 .bashrc</span><br><span class="line">c1	   c2 c3   c4    c5   c6           c7</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>c1: on each line contains the permissions set for that file or directory.</li>
+<li>c2: number of hardlinks to the item.</li>
+<li>c3: owner.</li>
+<li>c4: group.</li>
+<li>c5: the size of each file in bytes.</li>
+<li>c6: the date and time each file was most recently modified.</li>
+<li>c7: file’s name or directory’s name.</li>
+</ul>
+<h3 id="⌛-Understanding-File-Permissions-and-Ownership"><a href="#⌛-Understanding-File-Permissions-and-Ownership" class="headerlink" title="⌛ Understanding File Permissions and Ownership"></a>⌛ Understanding File Permissions and Ownership</h3><p><strong>Setting Read, Write, and Execute Permissions</strong></p>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>File</th>
+<th>Directory</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Read</td>
+<td>View what’s in the file</td>
+<td>See what files and subdirectories it contains</td>
+</tr>
+<tr>
+<td>Write</td>
+<td>Change the file’s content, rename it, or delete it</td>
+<td>Add files or subdirectories to the directory. Remove files or directories from the directory</td>
+</tr>
+<tr>
+<td>Execute</td>
+<td>Run the file as a program</td>
+<td>Change to the directory as the current directory, search through the directory, or execute a program from the directory. Access file metadata(file size, time stamps, and so on) of files in that directory</td>
+</tr>
+</tbody></table>
+<ul>
 <li>Changing permissions with chmod (numbers)</li>
+</ul>
+<p>Read - 4<br>Write - 2<br>Execute - 1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rw-r--r-- 1 yang yang 0 Jul  2 22:33 example</span><br><span class="line">[yang@arch ~] $ chmod 755 example</span><br><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rwxr-xr-x 1 yang yang 0 Jul  2 22:33 example</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>Changing permissions with chmod (letters)</li>
+</ul>
+<p>User - u<br>Group - g<br>Other - o<br>All user - a</p>
+<p>Read - r<br>Write - w<br>Execute - x</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rwxr-xr-x 1 yang yang 0 Jul  2 22:33 example</span><br><span class="line">[yang@arch ~] $ chmod a-x example</span><br><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rw-r--r-- 1 yang yang 0 Jul  2 22:33 example</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">  1 -rw-r--r-- 1 yang yang 0 Jul  2 22:33 example</span><br><span class="line">[yang@arch ~] $ chmod u+x example</span><br><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rwxr--r-- 1 yang yang 0 Jul  2 22:33 example</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>Setting default file permisiion with umask</li>
+</ul>
+<p>If you ignore the leading zero for the moment, the <strong>umask</strong> value masks what is considered to be fully opened permissions for a file 666 or 777. The umask value of 022 results in permission for a directory of 775(rwxrwxr-x). That same umask results in a file permission of 644(rw-rw-r–). (Execute permissions are off by default for regular files.)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ umask</span><br><span class="line">0022</span><br><span class="line">[yang@arch ~] $ mkdir example</span><br><span class="line">[yang@arch ~] $ ls -l</span><br><span class="line">total 20</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Downloads</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jul  2 22:51 example</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Pictures</span><br><span class="line">drwxr-xr-x 4 yang yang 4096 Jun 25 17:55 Projects</span><br><span class="line">drwxr-xr-x 3 yang yang 4096 Jun 24 17:41 Software</span><br><span class="line">[yang@arch ~] $ touch example.txt</span><br><span class="line">[yang@arch ~] $ ls -l</span><br><span class="line">total 20</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Downloads</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jul  2 22:51 example</span><br><span class="line">-rw-r--r-- 1 yang yang    0 Jul  2 22:51 example.txt</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Pictures</span><br><span class="line">drwxr-xr-x 4 yang yang 4096 Jun 25 17:55 Projects</span><br><span class="line">drwxr-xr-x 3 yang yang 4096 Jun 24 17:41 Software</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>Changing file owership</li>
 </ul>
-<h3 id="⌛-Moving-Copying-and-Removing-Files"><a href="#⌛-Moving-Copying-and-Removing-Files" class="headerlink" title="⌛ Moving, Copying, and Removing Files"></a>⌛ Moving, Copying, and Removing Files</h3><h2 id="Chapter-3-Working-with-Text-Files"><a href="#Chapter-3-Working-with-Text-Files" class="headerlink" title="Chapter 3 Working with Text Files"></a>Chapter 3 Working with Text Files</h2><h3 id="⌛-Editing-Files-with-vim-and-vi"><a href="#⌛-Editing-Files-with-vim-and-vi" class="headerlink" title="⌛ Editing Files with vim and vi"></a>⌛ Editing Files with vim and vi</h3><ul>
-<li>Starting with vi</li>
-<li>Skipping around in the file</li>
-<li>Searching for text</li>
-<li>Using ex mode</li>
-<li>Learning more about vi and vim</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -l</span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Downloads</span><br><span class="line">-rw-r--r-- 1 yang yang    0 Jul  2 22:58 example</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Pictures</span><br><span class="line">drwxr-xr-x 4 yang yang 4096 Jun 25 17:55 Projects</span><br><span class="line">drwxr-xr-x 3 yang yang 4096 Jun 24 17:41 Software</span><br><span class="line">[yang@arch ~] $ sudo chown xian:xian example</span><br><span class="line">[yang@arch ~] $ ls -l</span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Downloads</span><br><span class="line">-rw-r--r-- 1 xian xian    0 Jul  2 22:58 example</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Pictures</span><br><span class="line">drwxr-xr-x 4 yang yang 4096 Jun 25 17:55 Projects</span><br><span class="line">drwxr-xr-x 3 yang yang 4096 Jun 24 17:41 Software</span><br></pre></td></tr></table></figure>
+
+<h3 id="⌛-Moving-Copying-and-Removing-Files"><a href="#⌛-Moving-Copying-and-Removing-Files" class="headerlink" title="⌛ Moving, Copying, and Removing Files"></a>⌛ Moving, Copying, and Removing Files</h3><ul>
+<li>mv: To change the location of a file.</li>
+<li>cp: To copy a file from one location to another.</li>
+<li>rm: To remove a file.</li>
 </ul>
+<h2 id="Chapter-3-Working-with-Text-Files"><a href="#Chapter-3-Working-with-Text-Files" class="headerlink" title="Chapter 3 Working with Text Files"></a>Chapter 3 Working with Text Files</h2><h3 id="⌛-Editing-Files-with-vim-and-vi"><a href="#⌛-Editing-Files-with-vim-and-vi" class="headerlink" title="⌛ Editing Files with vim and vi"></a>⌛ Editing Files with vim and vi</h3><hr>
+<ul>
+<li>Starting with vi</li>
+</ul>
+<p><strong>Adding text</strong></p>
+<p>a: The add command.<br>A: The add at end command.<br>i: The insert command.<br>I: The insert at beginning command.<br>o: The open below command.<br>O: The open above command.</p>
+<p><strong>Moving around in the text</strong></p>
+<ul>
+<li>Arrow keys: Move the cursor up(k), down(j), left(h), or right(l) in the file one character at a time.</li>
+<li>w: Moves the cursor to the beginning of the next word(delimited by spaces, tabs, or punctuation).</li>
+<li>W: Moves the cursor to the beginning of the next word(delimited by spaces or tabs).</li>
+<li>b: Moves the cursor to the beginning of the previous word(delimited by spaces, tabs, or punctuation).</li>
+<li>B: Moves the cursor to the beginning of the previous word(delimited by spaces or tabs).</li>
+<li>0(zero): Moves the cursor to the beginning of the current line.</li>
+<li>$: Moves the cursor to the end of the current line.</li>
+<li>H: Moves the cursor to the upper-left corner of the screen(first line on the screen).</li>
+<li>M: Moves the cursor to the first character of the middle line on the screen.</li>
+<li>L: Moves the cursor to the lower-left corner of the screen(last line on the screen).</li>
+</ul>
+<p><strong>Deleting, copying, and changing text</strong></p>
+<ul>
+<li>x: Deletes the charater under the cursor.</li>
+<li>X: Deletes the charater directly before the cursor.</li>
+<li>d&lt;?&gt;: Deletes dome text.</li>
+<li>c&lt;?&gt;: Changes some text.</li>
+<li>y&lt;?&gt;: Yanks(copies) some text.</li>
+</ul>
+<p><strong>Pasting(putting) text</strong></p>
+<ul>
+<li>p: Puts the copied text to the left of the cursor if the text consists of letters or words; puts the copies text above the current line if the copied text contains lines of text.</li>
+<li>P: Puts the buffered text to the right of the cursor if the text consists letters or words; puts the buffered text below the current line if the buffered text contains lines of text.</li>
+</ul>
+<p>*<em>Repeating commands</em></p>
+<p>After you delete, change, or paste text, you can repeat that action by typing a period(.).</p>
+<p><strong>Exiting vi</strong></p>
+<ul>
+<li><p>ZZ: Saves the current changes to the file and exits from vi.</p>
+</li>
+<li><p>:w: Saves the current file, but you can continue editing.</p>
+</li>
+<li><p>:wq: Works the same as ZZ.</p>
+</li>
+<li><p>q: Quits the current file. This works only if you don’t have any unsaved changes.</p>
+</li>
+<li><p>q!: Quits the current file and doesn’t save the changes you just made to the file.</p>
+</li>
+<li><p>Esc: Remember that Esc gets you back to command mode.</p>
+</li>
+<li><p>u: Press u to undo the previous change you made.</p>
+</li>
+<li><p>Ctrl+R: If you decide that you didn’t want to undo the previous undo command, use Ctrl+R for Redo.</p>
+</li>
+<li><p>Caps Lock: Beware of hitting Caps Lock by mistake.</p>
+</li>
+<li><p>!command: You can run a shell command while you are in vi using:! followed by a shell command name.</p>
+</li>
+<li><p>Ctrl+g: If you forget what you are editing, pressing these keys displays the name of the file that you are editing and the current line that you are on at the bottom of the screen.</p>
+</li>
+<li><p>Skipping around in the file</p>
+</li>
+</ul>
+<p>Ctrl+f: Pages ahead one page at a time.<br>Ctrl+b: Pages back one page at a time.<br>Ctrl+d: Pages ahead one-half page at a time.<br>Ctrl+u: Pages back one-half page at a time.<br>G: Goes to the last line of the file.</p>
+<hr>
+<ul>
+<li>Searching for text</li>
+</ul>
+<p>&#x2F;hello: Searches forward for the word hello.<br>?goodbye: Searches backward for the word goodbye.<br>&#x2F;The.*foot: Searches forward for a line that has the word The in it and also, after that at some point, the word foot.<br>?[Pp]rint: Searches backward for either print or Print.</p>
+<hr>
+<ul>
+<li>Using ex mode</li>
+</ul>
+<p>:g&#x2F;Local: Searches for the word Local and prints every occurrence of that line from the file.<br>:s&#x2F;Local&#x2F;Remote: Substitutes Remote for the first occurrence of the word Local on the current line.<br>:g&#x2F;Local&#x2F;s&#x2F;&#x2F;Remote: Substitutes the first occurrence of the word Local on every line of the file with the word Remote.<br>:g&#x2F;Local&#x2F;s&#x2F;&#x2F;Remote&#x2F;g: Substitutes every occurrence of the word Local with the word Remote in the entire file.<br>:g&#x2F;Local&#x2F;s&#x2F;&#x2F;Remote&#x2F;gp: Substitutes every occurrence of the word Local with the word Remote in the entire file and then prints each line so that you can see the changes.</p>
+<hr>
 <h3 id="⌛-Finding-Files"><a href="#⌛-Finding-Files" class="headerlink" title="⌛ Finding Files"></a>⌛ Finding Files</h3><ul>
 <li>Using locate to find files by name</li>
 <li>Searching for files with find</li>
