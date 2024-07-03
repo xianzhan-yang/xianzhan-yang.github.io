@@ -28,7 +28,7 @@
 <meta property="og:description" content="Chapter 1: Using the Shell Chapter 2: Moving Around the Filesystem Chapter 3: Working with Text Files Chapter 4: Managing Running Processes Chapter 5: Writing Simple Shell Scripts">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-06-25T11:27:00.000Z">
-<meta property="article:modified_time" content="2024-07-02T15:53:22.787Z">
+<meta property="article:modified_time" content="2024-07-03T15:04:22.025Z">
 <meta property="article:author" content="xianzhan-yang">
 <meta name="twitter:card" content="summary">
 
@@ -185,7 +185,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-07-02 23:53:22" itemprop="dateModified" datetime="2024-07-02T23:53:22+08:00">2024-07-02</time>
+                <time title="Modified: 2024-07-03 23:04:22" itemprop="dateModified" datetime="2024-07-03T23:04:22+08:00">2024-07-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,18 +216,26 @@
 <li>Chapter 5: Writing Simple Shell Scripts<span id="more"></span></li>
 </ul>
 <h2 id="Chatper-1-Using-the-Shell"><a href="#Chatper-1-Using-the-Shell" class="headerlink" title="Chatper 1 Using the Shell"></a>Chatper 1 Using the Shell</h2><h3 id="⌛-About-Shells-and-Terminal-Windows"><a href="#⌛-About-Shells-and-Terminal-Windows" class="headerlink" title="⌛ About Shells and Terminal Windows"></a>⌛ About Shells and Terminal Windows</h3><ul>
-<li>Using the shell prompt</li>
-<li>Using the Terminal window</li>
-<li>Using the virtual consoles</li>
+<li><p>Using the shell prompt</p>
+</li>
+<li><p>Using the Terminal window</p>
+</li>
+<li><p>Using the virtual consoles</p>
+</li>
 </ul>
 <h3 id="⌛-Running-Commands"><a href="#⌛-Running-Commands" class="headerlink" title="⌛ Running Commands"></a>⌛ Running Commands</h3><ul>
-<li>Understanding command syntax</li>
-<li>Locaing commands</li>
+<li><p>Understanding command syntax</p>
+</li>
+<li><p>Locaing commands</p>
+</li>
 </ul>
 <h3 id="⏳-Recalling-Commands-Using-Command-History"><a href="#⏳-Recalling-Commands-Using-Command-History" class="headerlink" title="⏳ Recalling Commands Using Command History"></a>⏳ Recalling Commands Using Command History</h3><ul>
-<li>Command-line editing</li>
-<li>Command-line completion</li>
-<li>Command-line recall</li>
+<li><p>Command-line editing</p>
+</li>
+<li><p>Command-line completion</p>
+</li>
+<li><p>Command-line recall</p>
+</li>
 </ul>
 <h4 id="Command-line-editing"><a href="#Command-line-editing" class="headerlink" title="Command-line editing"></a>Command-line editing</h4><p><strong>Keystrokes for Navigating Command Lines</strong></p>
 <table>
@@ -365,60 +373,38 @@
 </tr>
 </tbody></table>
 <h4 id="Command-line-completion"><a href="#Command-line-completion" class="headerlink" title="Command-line completion"></a>Command-line completion</h4><ul>
-<li>Command, alias, or function: If the text you type begins with regular characters, the shell tries to complete the text with a command, alias, or function name</li>
-<li>Variable: If the text you type begins with a dollar sign($), the shell completes the text with a variable from the current shell</li>
-<li>Username: If the text you type begins with a tilde(~), the shell completes the text with a username</li>
-<li>Hostname: If the text you type begins with the at symbol(@), the shell completes the text with a hostname taken form the &#x2F;etc&#x2F;hosts files</li>
+<li><p>Command, alias, or function: If the text you type begins with regular characters, the shell tries to complete the text with a command, alias, or function name</p>
+</li>
+<li><p>Variable: If the text you type begins with a dollar sign($), the shell completes the text with a variable from the current shell</p>
+</li>
+<li><p>Username: If the text you type begins with a tilde(~), the shell completes the text with a username</p>
+</li>
+<li><p>Hostname: If the text you type begins with the at symbol(@), the shell completes the text with a hostname taken form the &#x2F;etc&#x2F;hosts files</p>
+</li>
 </ul>
 <h4 id="Command-line-recall"><a href="#Command-line-recall" class="headerlink" title="Command-line recall"></a>Command-line recall</h4><ul>
-<li>!n Run command number: Replace the n with the number of the command line and that line is run</li>
+<li><p>!n Run command number: Replace the n with the number of the command line and that line is run</p>
+</li>
+<li><p>!!-!! Run previous command: Runs the previous command line</p>
+</li>
+<li><p>!?string-? Run command containing string: This runs the most recent command that contains a particular string of characters</p>
+</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ history</span><br><span class="line">    1  clear</span><br><span class="line">    2  history</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ !2</span><br><span class="line">history</span><br><span class="line">    1  clear</span><br><span class="line">    2  history</span><br><span class="line">    3  history</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>!!-!! Run previous command: Runs the previous command line</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ history</span><br><span class="line">    1  clear</span><br><span class="line">    2  clear</span><br><span class="line">    3  history</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ !!</span><br><span class="line">history</span><br><span class="line">    1  clear</span><br><span class="line">    2  clear</span><br><span class="line">    3  history</span><br><span class="line">    4  history</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>!?string-? Run command containing string: This runs the most recent command that contains a particular string of characters</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ !?hi?</span><br><span class="line">history</span><br><span class="line">    1  clear</span><br><span class="line">    2  history</span><br><span class="line">    3  history</span><br><span class="line">    4  history</span><br></pre></td></tr></table></figure>
-
 <h3 id="⏳-Connecting-and-Expanding-Commands"><a href="#⏳-Connecting-and-Expanding-Commands" class="headerlink" title="⏳ Connecting and Expanding Commands"></a>⏳ Connecting and Expanding Commands</h3><ul>
-<li>Piping between commands (|): The pipe metacharacter connects the output of from one command to the input of another command.</li>
+<li><p>Piping between commands (|): The pipe metacharacter connects the output of from one command to the input of another command.</p>
+</li>
+<li><p>Sequential commands (;): Sometimes, you may want a sequence of commands to run, with one command completing before the next command begins.</p>
+</li>
+<li><p>Background commands (&amp;): Some commands can take a while to complete.</p>
+</li>
+<li><p>Expanding commands ($(command) or <code>command</code>): With command substitution, you can have the output of a command interpreted by the shell instead of by the command itself.</p>
+</li>
+<li><p>Expanding arithmetic expressions ($[expression] or $(expression)): Sometimes, you want to pass arithmetic results to a command.</p>
+</li>
+<li><p>Expanding variables: Variables that store information within the shell can be expanded using the dollar sign($) metacharacter.</p>
+</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ cat /etc/passwd | sort</span><br><span class="line">avahi:x:972:972:Avahi mDNS/DNS-SD daemon:/:/usr/bin/nologin</span><br><span class="line">bin:x:1:1::/:/usr/bin/nologin</span><br><span class="line">daemon:x:2:2::/:/usr/bin/nologin</span><br><span class="line">dbus:x:81:81:System Message Bus:/:/usr/bin/nologin</span><br><span class="line">dhcpcd:x:973:973:dhcpcd privilege separation:/:/usr/bin/nologin</span><br><span class="line">ftp:x:14:11::/srv/ftp:/usr/bin/nologin</span><br><span class="line">git:x:970:970:git daemon user:/:/usr/bin/git-shell</span><br><span class="line">http:x:33:33::/srv/http:/usr/bin/nologin</span><br><span class="line">lightdm:x:971:971:Light Display Manager:/var/lib/lightdm:/usr/bin/nologin</span><br><span class="line">mail:x:8:12::/var/spool/mail:/usr/bin/nologin</span><br><span class="line">nobody:x:65534:65534:Kernel Overflow User:/:/usr/bin/nologin</span><br><span class="line">polkitd:x:102:102:User for polkitd:/:/usr/bin/nologin</span><br><span class="line">root:x:0:0::/root:/usr/bin/bash</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Sequential commands (;): Sometimes, you may want a sequence of commands to run, with one command completing before the next command begins.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls .; cd Projects</span><br><span class="line">Downloads  Pictures  Projects  Software</span><br><span class="line"></span><br><span class="line">[yang@arch Projects] $</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Background commands (&amp;): Some commands can take a while to complete.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch Projects] $ dhcpcd &amp;</span><br><span class="line">[2] 1948</span><br><span class="line">[1]   Exit 127                job</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Expanding commands ($(command) or <code>command</code>): With command substitution, you can have the output of a command interpreted by the shell instead of by the command itself.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ echo $(date)</span><br><span class="line">Mon Jul 1 10:35:20 PM CST 2024</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ echo $date</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ echo `date`</span><br><span class="line">Mon Jul 1 10:35:45 PM CST 2024</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Expanding arithmetic expressions ($[expression] or $(expression)): Sometimes, you want to pass arithmetic results to a command.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ echo &quot;we get together for $[2024-2019] years&quot;</span><br><span class="line">we get together for 5 years</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ echo &quot;There are $(ls | wc -w) files in this directory.&quot;</span><br><span class="line">There are 4 files in this directory.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Expanding variables: Variables that store information within the shell can be expanded using the dollar sign($) metacharacter.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -l $BASH</span><br><span class="line">-rwxr-xr-x 1 root root 1112880 Jan 16 18:48 /usr/bin/bash</span><br></pre></td></tr></table></figure>
-
-<h3 id="⏳-Using-Shell-Variables"><a href="#⏳-Using-Shell-Variables" class="headerlink" title="⏳ Using Shell Variables"></a>⏳ Using Shell Variables</h3><p>The shell itself stores information that may be useful to the user’s shell session in what are called variables.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ echo $USER</span><br><span class="line">yang</span><br></pre></td></tr></table></figure>
-
-<p><strong>Common Shell Enviroment Variables</strong></p>
+<h3 id="⏳-Using-Shell-Variables"><a href="#⏳-Using-Shell-Variables" class="headerlink" title="⏳ Using Shell Variables"></a>⏳ Using Shell Variables</h3><p><strong>Common Shell Enviroment Variables</strong></p>
 <table>
 <thead>
 <tr>
@@ -512,12 +498,10 @@
 </tr>
 </tbody></table>
 <ul>
-<li>Creating and using aliases</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ alias p=&#x27;pwd ; ls -CF&#x27;</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ p</span><br><span class="line">/home/yang</span><br><span class="line">Downloads/  Pictures/  Projects/  Software/</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ unalias p</span><br><span class="line">[yang@arch ~] $ p</span><br><span class="line">bash: p: command not found</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Exiting the shell: To exit the shell when you are finished, type <strong>exit</strong> or press <strong>Ctrl+D</strong>.</li>
+<li><p>Creating and using aliases</p>
+</li>
+<li><p>Exiting the shell: To exit the shell when you are finished, type <strong>exit</strong> or press <strong>Ctrl+D</strong>.</p>
+</li>
 </ul>
 <h3 id="⏳-Creating-Your-Shell-Environment"><a href="#⏳-Creating-Your-Shell-Environment" class="headerlink" title="⏳ Creating Your Shell Environment"></a>⏳ Creating Your Shell Environment</h3><ul>
 <li>Configuring your shell</li>
@@ -636,30 +620,17 @@
 </li>
 </ul>
 <h3 id="⏳-Getting-Information-about-Commands"><a href="#⏳-Getting-Information-about-Commands" class="headerlink" title="⏳ Getting Information about Commands"></a>⏳ Getting Information about Commands</h3><ul>
-<li>Check the PATH: Type <strong>echo $PATH</strong>.</li>
+<li><p>Check the PATH: Type <strong>echo $PATH</strong>.</p>
+</li>
+<li><p>Use the help command: Some commands are built into the shell, so they do not appear in a directory. The help command lists those commands and shows options available with each of them.</p>
+</li>
+<li><p>Use –help with the command: Many commands include a –help option that you can use to get information about how the command is used.</p>
+</li>
+<li><p>Use the info command: The info command is another tool for displaying information about command from the shell.</p>
+</li>
+<li><p>Use the man command: To learn more about a particular command, enter man command.</p>
+</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ echo $PATH</span><br><span class="line">/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Use the help command: Some commands are built into the shell, so they do not appear in a directory. The help command lists those commands and shows options available with each of them.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ help | less</span><br><span class="line">GNU bash, version 5.2.26(1)-release (x86_64-pc-linux-gnu)</span><br><span class="line">These shell commands are defined internally.  Type `help&#x27; to see this list.</span><br><span class="line">Type `help name&#x27; to find out more about the function `name&#x27;.</span><br><span class="line">Use `info bash&#x27; to find out more about the shell in general.</span><br><span class="line">Use `man -k&#x27; or `info&#x27; to find out more about commands not in this list.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Use –help with the command: Many commands include a –help option that you can use to get information about how the command is used.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls --help</span><br><span class="line">Usage: ls [OPTION]... [FILE]...</span><br><span class="line">List information about the FILEs (the current directory by default).</span><br><span class="line">Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Use the info command: The info command is another tool for displaying information about command from the shell.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ info ls</span><br><span class="line">Next: dir invocation,  Up: Directory listing</span><br><span class="line"></span><br><span class="line">10.1 ‘ls’: List directory contents</span><br><span class="line">==================================</span><br><span class="line"></span><br><span class="line">The ‘ls’ program lists information about files (of any type, including</span><br><span class="line">directories).  Options and file arguments can be intermixed arbitrarily,</span><br><span class="line">as usual.  Later options override earlier options that are incompatible.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Use the man command: To learn more about a particular command, enter man command.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ man ls</span><br><span class="line">LS(1)                           User Commands                           LS(1)</span><br><span class="line"></span><br><span class="line">NAME</span><br><span class="line">       ls - list directory contents</span><br><span class="line"></span><br><span class="line">SYNOPSIS</span><br><span class="line">       ls [OPTION]... [FILE]...</span><br></pre></td></tr></table></figure>
-
 <p><strong>Manual Page Sections</strong></p>
 <table>
 <thead>
@@ -822,8 +793,6 @@
 <ul>
 <li>: Matches any number of characters<br>? : Matches any one characters<br>[…] : Matches any one of the characters between the brackets, which can include a hyphenseparated range of letters or numbers</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls P*</span><br><span class="line">Pictures:</span><br><span class="line">1.png</span><br><span class="line"></span><br><span class="line">Projects:</span><br><span class="line">Github  MyBlog</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ ls Pro?????</span><br><span class="line">Github  MyBlog</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ ls [P-Z]*</span><br><span class="line">Pictures:</span><br><span class="line">1.png</span><br><span class="line"></span><br><span class="line">Projects:</span><br><span class="line">Github  MyBlog</span><br><span class="line"></span><br><span class="line">Software:</span><br><span class="line">Paru</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>Using file-redirecton metacharacters (&gt;,&lt;,2&gt;,&amp;&gt;,&gt;&gt;)</li>
 </ul>
@@ -834,25 +803,10 @@
 <p>: Directs the output of a command to a file.</p>
 </blockquote>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ less &lt; .npmrc</span><br><span class="line">prefix=~/.npm-global</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ ls &gt; test</span><br><span class="line">[yang@arch ~] $ cat test</span><br><span class="line">Downloads</span><br><span class="line">Pictures</span><br><span class="line">Projects</span><br><span class="line">Software</span><br><span class="line">test</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ cat date 2&gt; error</span><br><span class="line">[yang@arch ~] $ cat error</span><br><span class="line">cat: date: No such file or directory</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ cat date &gt; right</span><br><span class="line">cat: date: No such file or directory</span><br><span class="line">[yang@arch ~] $ cat right</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ echo date &gt; right</span><br><span class="line">[yang@arch ~] $ cat right</span><br><span class="line">date</span><br><span class="line">[yang@arch ~] $ echo date1 &gt;&gt; right</span><br><span class="line">[yang@arch ~] $ cat right</span><br><span class="line">date</span><br><span class="line">date1</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>Using brace expansion characters ({})</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ touch nihao&#123;1,2,3,4&#125;</span><br><span class="line">[yang@arch ~] $ ls</span><br><span class="line">Downloads  nihao2  nihao4    Projects  Software</span><br><span class="line">nihao1     nihao3  Pictures  right</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ rm nihao&#123;1,2,3,4&#125;</span><br><span class="line">[yang@arch ~] $ ls</span><br><span class="line">Downloads  Pictures  Projects  right  Software</span><br></pre></td></tr></table></figure>
-
-<h3 id="⌛-Listing-Files-and-Directories"><a href="#⌛-Listing-Files-and-Directories" class="headerlink" title="⌛ Listing Files and Directories"></a>⌛ Listing Files and Directories</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -al</span><br><span class="line">total 144</span><br><span class="line">drwx------ 15 yang yang  4096 Jul  2 22:03 .</span><br><span class="line">drwxr-xr-x  3 root root  4096 Jun 24 15:55 ..</span><br><span class="line">-rw-------  1 yang yang  6033 Jul  2 20:16 .bash_history</span><br><span class="line">-rw-r--r--  1 yang yang    21 Jan 16 18:48 .bash_logout</span><br><span class="line">-rw-r--r--  1 yang yang    57 Jan 16 18:48 .bash_profile</span><br><span class="line">-rw-r--r--  1 yang yang   173 Jul  2 20:00 .bashrc</span><br><span class="line">c1	   c2 c3   c4    c5   c6           c7</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>c1: on each line contains the permissions set for that file or directory.</li>
-<li>c2: number of hardlinks to the item.</li>
-<li>c3: owner.</li>
-<li>c4: group.</li>
-<li>c5: the size of each file in bytes.</li>
-<li>c6: the date and time each file was most recently modified.</li>
-<li>c7: file’s name or directory’s name.</li>
-</ul>
-<h3 id="⌛-Understanding-File-Permissions-and-Ownership"><a href="#⌛-Understanding-File-Permissions-and-Ownership" class="headerlink" title="⌛ Understanding File Permissions and Ownership"></a>⌛ Understanding File Permissions and Ownership</h3><p><strong>Setting Read, Write, and Execute Permissions</strong></p>
+<h3 id="⌛-Listing-Files-and-Directories"><a href="#⌛-Listing-Files-and-Directories" class="headerlink" title="⌛ Listing Files and Directories"></a>⌛ Listing Files and Directories</h3><h3 id="⌛-Understanding-File-Permissions-and-Ownership"><a href="#⌛-Understanding-File-Permissions-and-Ownership" class="headerlink" title="⌛ Understanding File Permissions and Ownership"></a>⌛ Understanding File Permissions and Ownership</h3><p><strong>Setting Read, Write, and Execute Permissions</strong></p>
 <table>
 <thead>
 <tr>
@@ -877,41 +831,38 @@
 <td>Change to the directory as the current directory, search through the directory, or execute a program from the directory. Access file metadata(file size, time stamps, and so on) of files in that directory</td>
 </tr>
 </tbody></table>
+<hr>
 <ul>
 <li>Changing permissions with chmod (numbers)</li>
 </ul>
-<p>Read - 4<br>Write - 2<br>Execute - 1</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rw-r--r-- 1 yang yang 0 Jul  2 22:33 example</span><br><span class="line">[yang@arch ~] $ chmod 755 example</span><br><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rwxr-xr-x 1 yang yang 0 Jul  2 22:33 example</span><br></pre></td></tr></table></figure>
-
+<p>r&#x3D;4<br>w&#x3D;2<br>r&#x3D;1</p>
+<hr>
 <ul>
 <li>Changing permissions with chmod (letters)</li>
 </ul>
-<p>User - u<br>Group - g<br>Other - o<br>All user - a</p>
-<p>Read - r<br>Write - w<br>Execute - x</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rwxr-xr-x 1 yang yang 0 Jul  2 22:33 example</span><br><span class="line">[yang@arch ~] $ chmod a-x example</span><br><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rw-r--r-- 1 yang yang 0 Jul  2 22:33 example</span><br><span class="line"></span><br><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">  1 -rw-r--r-- 1 yang yang 0 Jul  2 22:33 example</span><br><span class="line">[yang@arch ~] $ chmod u+x example</span><br><span class="line">[yang@arch ~] $ ls -l example</span><br><span class="line">-rwxr--r-- 1 yang yang 0 Jul  2 22:33 example</span><br></pre></td></tr></table></figure>
-
+<p>user     (u)<br>group    (g)<br>other    (o)<br>all user (a)</p>
+<p>read     (r)<br>write    (w)<br>execute  (x)</p>
+<hr>
 <ul>
 <li>Setting default file permisiion with umask</li>
 </ul>
 <p>If you ignore the leading zero for the moment, the <strong>umask</strong> value masks what is considered to be fully opened permissions for a file 666 or 777. The umask value of 022 results in permission for a directory of 775(rwxrwxr-x). That same umask results in a file permission of 644(rw-rw-r–). (Execute permissions are off by default for regular files.)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ umask</span><br><span class="line">0022</span><br><span class="line">[yang@arch ~] $ mkdir example</span><br><span class="line">[yang@arch ~] $ ls -l</span><br><span class="line">total 20</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Downloads</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jul  2 22:51 example</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Pictures</span><br><span class="line">drwxr-xr-x 4 yang yang 4096 Jun 25 17:55 Projects</span><br><span class="line">drwxr-xr-x 3 yang yang 4096 Jun 24 17:41 Software</span><br><span class="line">[yang@arch ~] $ touch example.txt</span><br><span class="line">[yang@arch ~] $ ls -l</span><br><span class="line">total 20</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Downloads</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jul  2 22:51 example</span><br><span class="line">-rw-r--r-- 1 yang yang    0 Jul  2 22:51 example.txt</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Pictures</span><br><span class="line">drwxr-xr-x 4 yang yang 4096 Jun 25 17:55 Projects</span><br><span class="line">drwxr-xr-x 3 yang yang 4096 Jun 24 17:41 Software</span><br></pre></td></tr></table></figure>
-
+<hr>
 <ul>
 <li>Changing file owership</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[yang@arch ~] $ ls -l</span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Downloads</span><br><span class="line">-rw-r--r-- 1 yang yang    0 Jul  2 22:58 example</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Pictures</span><br><span class="line">drwxr-xr-x 4 yang yang 4096 Jun 25 17:55 Projects</span><br><span class="line">drwxr-xr-x 3 yang yang 4096 Jun 24 17:41 Software</span><br><span class="line">[yang@arch ~] $ sudo chown xian:xian example</span><br><span class="line">[yang@arch ~] $ ls -l</span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Downloads</span><br><span class="line">-rw-r--r-- 1 xian xian    0 Jul  2 22:58 example</span><br><span class="line">drwxr-xr-x 2 yang yang 4096 Jun 24 17:51 Pictures</span><br><span class="line">drwxr-xr-x 4 yang yang 4096 Jun 25 17:55 Projects</span><br><span class="line">drwxr-xr-x 3 yang yang 4096 Jun 24 17:41 Software</span><br></pre></td></tr></table></figure>
-
 <h3 id="⌛-Moving-Copying-and-Removing-Files"><a href="#⌛-Moving-Copying-and-Removing-Files" class="headerlink" title="⌛ Moving, Copying, and Removing Files"></a>⌛ Moving, Copying, and Removing Files</h3><ul>
 <li>mv: To change the location of a file.</li>
 <li>cp: To copy a file from one location to another.</li>
 <li>rm: To remove a file.</li>
 </ul>
-<h2 id="Chapter-3-Working-with-Text-Files"><a href="#Chapter-3-Working-with-Text-Files" class="headerlink" title="Chapter 3 Working with Text Files"></a>Chapter 3 Working with Text Files</h2><h3 id="⌛-Editing-Files-with-vim-and-vi"><a href="#⌛-Editing-Files-with-vim-and-vi" class="headerlink" title="⌛ Editing Files with vim and vi"></a>⌛ Editing Files with vim and vi</h3><hr>
-<ul>
+<h2 id="Chapter-3-Working-with-Text-Files"><a href="#Chapter-3-Working-with-Text-Files" class="headerlink" title="Chapter 3 Working with Text Files"></a>Chapter 3 Working with Text Files</h2><h3 id="⌛-Editing-Files-with-vim-and-vi"><a href="#⌛-Editing-Files-with-vim-and-vi" class="headerlink" title="⌛ Editing Files with vim and vi"></a>⌛ Editing Files with vim and vi</h3><ul>
 <li>Starting with vi</li>
 </ul>
+<hr>
 <p><strong>Adding text</strong></p>
 <p>a: The add command.<br>A: The add at end command.<br>i: The insert command.<br>I: The insert at beginning command.<br>o: The open below command.<br>O: The open above command.</p>
+<hr>
 <p><strong>Moving around in the text</strong></p>
 <ul>
 <li>Arrow keys: Move the cursor up(k), down(j), left(h), or right(l) in the file one character at a time.</li>
@@ -925,6 +876,7 @@
 <li>M: Moves the cursor to the first character of the middle line on the screen.</li>
 <li>L: Moves the cursor to the lower-left corner of the screen(last line on the screen).</li>
 </ul>
+<hr>
 <p><strong>Deleting, copying, and changing text</strong></p>
 <ul>
 <li>x: Deletes the charater under the cursor.</li>
@@ -933,39 +885,33 @@
 <li>c&lt;?&gt;: Changes some text.</li>
 <li>y&lt;?&gt;: Yanks(copies) some text.</li>
 </ul>
+<hr>
 <p><strong>Pasting(putting) text</strong></p>
 <ul>
 <li>p: Puts the copied text to the left of the cursor if the text consists of letters or words; puts the copies text above the current line if the copied text contains lines of text.</li>
 <li>P: Puts the buffered text to the right of the cursor if the text consists letters or words; puts the buffered text below the current line if the buffered text contains lines of text.</li>
 </ul>
+<hr>
 <p>*<em>Repeating commands</em></p>
 <p>After you delete, change, or paste text, you can repeat that action by typing a period(.).</p>
+<hr>
 <p><strong>Exiting vi</strong></p>
 <ul>
-<li><p>ZZ: Saves the current changes to the file and exits from vi.</p>
-</li>
-<li><p>:w: Saves the current file, but you can continue editing.</p>
-</li>
-<li><p>:wq: Works the same as ZZ.</p>
-</li>
-<li><p>q: Quits the current file. This works only if you don’t have any unsaved changes.</p>
-</li>
-<li><p>q!: Quits the current file and doesn’t save the changes you just made to the file.</p>
-</li>
-<li><p>Esc: Remember that Esc gets you back to command mode.</p>
-</li>
-<li><p>u: Press u to undo the previous change you made.</p>
-</li>
-<li><p>Ctrl+R: If you decide that you didn’t want to undo the previous undo command, use Ctrl+R for Redo.</p>
-</li>
-<li><p>Caps Lock: Beware of hitting Caps Lock by mistake.</p>
-</li>
-<li><p>!command: You can run a shell command while you are in vi using:! followed by a shell command name.</p>
-</li>
-<li><p>Ctrl+g: If you forget what you are editing, pressing these keys displays the name of the file that you are editing and the current line that you are on at the bottom of the screen.</p>
-</li>
-<li><p>Skipping around in the file</p>
-</li>
+<li>ZZ: Saves the current changes to the file and exits from vi.</li>
+<li>:w: Saves the current file, but you can continue editing.</li>
+<li>:wq: Works the same as ZZ.</li>
+<li>q: Quits the current file. This works only if you don’t have any unsaved changes.</li>
+<li>q!: Quits the current file and doesn’t save the changes you just made to the file.</li>
+<li>Esc: Remember that Esc gets you back to command mode.</li>
+<li>u: Press u to undo the previous change you made.</li>
+<li>Ctrl+R: If you decide that you didn’t want to undo the previous undo command, use Ctrl+R for Redo.</li>
+<li>Caps Lock: Beware of hitting Caps Lock by mistake.</li>
+<li>!command: You can run a shell command while you are in vi using:! followed by a shell command name.</li>
+<li>Ctrl+g: If you forget what you are editing, pressing these keys displays the name of the file that you are editing and the current line that you are on at the bottom of the screen.</li>
+</ul>
+<hr>
+<ul>
+<li>Skipping around in the file</li>
 </ul>
 <p>Ctrl+f: Pages ahead one page at a time.<br>Ctrl+b: Pages back one page at a time.<br>Ctrl+d: Pages ahead one-half page at a time.<br>Ctrl+u: Pages back one-half page at a time.<br>G: Goes to the last line of the file.</p>
 <hr>
@@ -982,25 +928,289 @@
 <h3 id="⌛-Finding-Files"><a href="#⌛-Finding-Files" class="headerlink" title="⌛ Finding Files"></a>⌛ Finding Files</h3><ul>
 <li>Using locate to find files by name</li>
 <li>Searching for files with find</li>
+</ul>
+<p><strong>Finding files by name</strong><br><strong>Finding files by size</strong><br><strong>Finding files by user</strong><br><strong>Finding files by permission</strong><br><strong>Using ‘not’ and ‘or’ when finding files</strong><br><strong>Finding files and executing commands</strong></p>
+<ul>
 <li>Searching in files with grep</li>
 </ul>
 <h2 id="Chapter-4-Managing-Running-Processes"><a href="#Chapter-4-Managing-Running-Processes" class="headerlink" title="Chapter 4 Managing Running Processes"></a>Chapter 4 Managing Running Processes</h2><h3 id="⌛-Listing-Processes"><a href="#⌛-Listing-Processes" class="headerlink" title="⌛ Listing Processes"></a>⌛ Listing Processes</h3><ul>
 <li>Listing processes with ps</li>
 <li>Listing and changing processes with top</li>
 </ul>
+<p>Press <strong>h</strong> to see help options, and then press any key to return to the top display.<br>Press <strong>M</strong> to sort by memory usage instead of CPU, and then press <strong>P</strong> to return to sorting by CPU.<br>Press the number <strong>1</strong> to toggle showing CPU usage of all your CPUs if you have more than one CPU on your system.<br>Press <strong>R</strong> to reverse sort your output.<br>Press <strong>u</strong> and enter a username to display process only for a particular user.</p>
 <h3 id="⌛-Managing-Background-and-Foreground-Processes"><a href="#⌛-Managing-Background-and-Foreground-Processes" class="headerlink" title="⌛ Managing Background and Foreground Processes"></a>⌛ Managing Background and Foreground Processes</h3><ul>
 <li>Starting background processes</li>
 <li>Using foreground and background commands</li>
 </ul>
 <h3 id="⌛-Killing-and-Renicing-Processes"><a href="#⌛-Killing-and-Renicing-Processes" class="headerlink" title="⌛ Killing and Renicing Processes"></a>⌛ Killing and Renicing Processes</h3><ul>
 <li>Killing processes with kill and killall</li>
+</ul>
+<p><strong>Using kill to signal processes by PID</strong><br><strong>Signals Available in Linux</strong></p>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SIGHUP</td>
+<td>1</td>
+<td>Hang-up detected on controlling terminal or death of controlling process</td>
+</tr>
+<tr>
+<td>SIGINT</td>
+<td>2</td>
+<td>Interrupt from keyboard</td>
+</tr>
+<tr>
+<td>SIGQUIT</td>
+<td>3</td>
+<td>Quit from keyboard</td>
+</tr>
+<tr>
+<td>SIGABRT</td>
+<td>6</td>
+<td>Abort signal from abort</td>
+</tr>
+<tr>
+<td>SIGKILL</td>
+<td>9</td>
+<td>Kill signal</td>
+</tr>
+<tr>
+<td>SIGTERM</td>
+<td>15</td>
+<td>Termination signal</td>
+</tr>
+<tr>
+<td>SIGCONT</td>
+<td>19,18,25</td>
+<td>Continue if stopped</td>
+</tr>
+<tr>
+<td>SIGSTOP</td>
+<td>17,19,23</td>
+<td>Stop process</td>
+</tr>
+</tbody></table>
+<ul>
 <li>Setting processor proiority with nice and renice</li>
 </ul>
-<h3 id="⏳-Limiting-Processes-with-cgroups"><a href="#⏳-Limiting-Processes-with-cgroups" class="headerlink" title="⏳ Limiting Processes with cgroups"></a>⏳ Limiting Processes with cgroups</h3><h2 id="Chapter-5-Writing-Simple-Shell-Scripts"><a href="#Chapter-5-Writing-Simple-Shell-Scripts" class="headerlink" title="Chapter 5 Writing Simple Shell Scripts"></a>Chapter 5 Writing Simple Shell Scripts</h2><h3 id="⏳-Understanding-Shell-Scripts"><a href="#⏳-Understanding-Shell-Scripts" class="headerlink" title="⏳ Understanding Shell Scripts"></a>⏳ Understanding Shell Scripts</h3><ul>
-<li>Executing and debugging shell scripts</li>
-<li>Understanding shell variables</li>
-<li>Performing arithmetic in shell scripts</li>
-<li>Using programming constructs in shell scripts</li>
+<p><strong>The lower the nice value, the more access to the CPUs the process has.</strong><br><strong>A regular user can set nice values only from 0 to 19.</strong><br><strong>A regular user can set the nice value higher, not lower.</strong><br><strong>A regular user can set the nice value only on the user’s own processes.</strong><br><strong>The root user can set the nice value on any process to any valid value, up or down.</strong></p>
+<h3 id="⏳-Limiting-Processes-with-cgroups"><a href="#⏳-Limiting-Processes-with-cgroups" class="headerlink" title="⏳ Limiting Processes with cgroups"></a>⏳ Limiting Processes with cgroups</h3><p>The types of resources that can be limited by cgroups include the following:</p>
+<ul>
+<li><p>Storage(blkio): Limits total input and output access to storage devices.</p>
+</li>
+<li><p>Processor scheduling(cpu): Assigns the amount of access a cgroup has to be scheduled for processing power.</p>
+</li>
+<li><p>Process accounting(cpuacct): Reports on CPU usage.</p>
+</li>
+<li><p>CPU assignment(cpuset): On systems with multiple CPU cores, assigns a task to a particular set of processors and associated memory.</p>
+</li>
+<li><p>Device access(devices): Allows tasks in a cgroup to open or create(mknod) selected device types.</p>
+</li>
+<li><p>Suspend&#x2F;resume(freezer): Suspends and resumes cgroup tasks.</p>
+</li>
+<li><p>Memory usage(memory): Limits memory usage by task.</p>
+</li>
+<li><p>Network bandwidth(net_cls): Limits network access to selected cgroup tasks.</p>
+</li>
+<li><p>Network traffic(net_prio): Sets prorities of network traffic coming from selected cgroups and lets administrators change these priorities on the fly.</p>
+</li>
+<li><p>Name spaces(ns): Separates cgroups into namespaces, so processes in one cgroup can only see the namespaces assoicated with the cgroup.</p>
+</li>
+</ul>
+<h2 id="Chapter-5-Writing-Simple-Shell-Scripts"><a href="#Chapter-5-Writing-Simple-Shell-Scripts" class="headerlink" title="Chapter 5 Writing Simple Shell Scripts"></a>Chapter 5 Writing Simple Shell Scripts</h2><h3 id="⏳-Understanding-Shell-Scripts"><a href="#⏳-Understanding-Shell-Scripts" class="headerlink" title="⏳ Understanding Shell Scripts"></a>⏳ Understanding Shell Scripts</h3><ul>
+<li><p>Executing(bash myscript or chmod +x myscript) and debugging shell scripts (bash -x myscript)</p>
+</li>
+<li><p>Understanding shell variables</p>
+</li>
+</ul>
+<p><strong>Special shell positional parameters</strong></p>
+<ul>
+<li>$0: is the full path or relative path to myscript.</li>
+<li>$1: assigned the name used to invoke your script.</li>
+<li>$#: how many parameters your script was given.</li>
+<li>$@: holds all of the arguments entered at the command line.</li>
+<li>$?: receives the exit status of the last command executed.</li>
+</ul>
+<p><strong>Reading in parameters</strong></p>
+<p><strong>Parameter expansion in bash</strong></p>
+<ul>
+<li><p>${var:-value}: If variable is unset or empty, expand this to value.</p>
+</li>
+<li><p>${var#pattern}: Chop the shorest match for pattern from the front of var’s value.</p>
+</li>
+<li><p>${var##patern}: Chop the longest match for pattern from the front of var’s value.</p>
+</li>
+<li><p>${var%pattern}: Chop the shortest match for pattern from the end of var’s value.</p>
+</li>
+<li><p>${var%%pattern}: Chop the longest match for pattern from the end of var’s value.</p>
+</li>
+<li><p>Performing arithmetic in shell scripts</p>
+</li>
+<li><p>Using programming constructs in shell scripts</p>
+</li>
+</ul>
+<p><strong>The “if…then” statements</strong></p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>What Is Being Tested?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a file</td>
+<td>Does the file exist?</td>
+</tr>
+<tr>
+<td>-b file</td>
+<td>Is the file a block special device?</td>
+</tr>
+<tr>
+<td>-c file</td>
+<td>Is the file character special? Used to identify serial lines and terminal devices</td>
+</tr>
+<tr>
+<td>-d file</td>
+<td>Is the file a directory?</td>
+</tr>
+<tr>
+<td>-e file</td>
+<td>Does the file exist?</td>
+</tr>
+<tr>
+<td>-f file</td>
+<td>does the file exist, and is it a regular file?</td>
+</tr>
+<tr>
+<td>-g file</td>
+<td>Does the file have the set group id bit set?</td>
+</tr>
+<tr>
+<td>-h file</td>
+<td>Is the file a symbolic link?</td>
+</tr>
+<tr>
+<td>-k file</td>
+<td>Does the file have the sticky bit set?</td>
+</tr>
+<tr>
+<td>-L file</td>
+<td>Is the file a symbolic link?</td>
+</tr>
+<tr>
+<td>-n string</td>
+<td>Is the length of the string greater than 0 bytes?</td>
+</tr>
+<tr>
+<td>-O file</td>
+<td>Do you own the file?</td>
+</tr>
+<tr>
+<td>-p file</td>
+<td>Is the file a named pipe?</td>
+</tr>
+<tr>
+<td>-r file</td>
+<td>Is the file readable by you?</td>
+</tr>
+<tr>
+<td>-s file</td>
+<td>Does the file exist, and is it larger than 0 bytes?</td>
+</tr>
+<tr>
+<td>-S file</td>
+<td>Does the file exist, and is it a socket?</td>
+</tr>
+<tr>
+<td>-t fd</td>
+<td>Is the file descriptor connected to a terminal?</td>
+</tr>
+<tr>
+<td>-u file</td>
+<td>Does the file have the set user id bit set?</td>
+</tr>
+<tr>
+<td>-w file</td>
+<td>Is the file writable by you?</td>
+</tr>
+<tr>
+<td>-x file</td>
+<td>Is the file excutable by you?</td>
+</tr>
+<tr>
+<td>-z string</td>
+<td>Is the length of the string 0 bytes?</td>
+</tr>
+<tr>
+<td>expr1 -a expr2</td>
+<td>Are both the first expression and the second expression true?</td>
+</tr>
+<tr>
+<td>expr1 -o expr2</td>
+<td>Is either of the two expressions true?</td>
+</tr>
+<tr>
+<td>file1 -nt file2</td>
+<td>Is the first file newer than the second file?</td>
+</tr>
+<tr>
+<td>file1 -ot file2</td>
+<td>Is the first file older than the second file?</td>
+</tr>
+<tr>
+<td>file1 -ef file2</td>
+<td>Are the two files associated by a link?</td>
+</tr>
+<tr>
+<td>var1 &#x3D; var2</td>
+<td>Is the first variable equal to the second variable?</td>
+</tr>
+<tr>
+<td>var1 -eq var2</td>
+<td>Is the first variable equal to the second variable?</td>
+</tr>
+<tr>
+<td>var1 -ge var2</td>
+<td>Is the first variable greater than or equal to the second variable?</td>
+</tr>
+<tr>
+<td>var1 -gt var2</td>
+<td>Is the first variable greater than the second variable?</td>
+</tr>
+<tr>
+<td>var1 -le var2</td>
+<td>Is the first variable less than or equal to the second variable?</td>
+</tr>
+<tr>
+<td>var1 -lt var2</td>
+<td>Is the first variable less than the second variable?</td>
+</tr>
+<tr>
+<td>var1 !&#x3D; var2</td>
+<td>Is the first variable not equal to the second variable?</td>
+</tr>
+<tr>
+<td>var1 -ne var2</td>
+<td>Is the first variable not equal to the second variable?</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>The case command</strong></p>
+<p>case “VAR” in<br>  REsult1)<br>    { body };;<br>  Result2)<br>    { body };;<br>  *)<br>    { body } ;;<br>esac</p>
+<hr>
+<p><strong>The “for…do” loop</strong></p>
+<p>for VAR in LIST<br>do<br>  { body }<br>done</p>
+<hr>
+<p><strong>The “while…do” and “until…do” loops</strong></p>
+<p>while condition<br>do<br>  { body }<br>done</p>
+<p>until condition<br>do<br>  { body }<br>done</p>
+<hr>
+<ul>
 <li>Trying some useful text manipulation programs</li>
 </ul>
 
