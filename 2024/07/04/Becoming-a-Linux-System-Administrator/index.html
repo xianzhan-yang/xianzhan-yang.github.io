@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Chapter 1: Learning System Administration Chapter 2: Installing Linux Chapter 3: Getting and Managing Software Chapter 4: Managing User Accounts Chapter 5: Managing Disk and Filesystems">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Becoming a Linux System Administrator">
+<meta property="og:url" content="http://example.com/2024/07/04/Becoming-a-Linux-System-Administrator/index.html">
+<meta property="og:site_name" content="How Are You Today?">
+<meta property="og:description" content="Chapter 1: Learning System Administration Chapter 2: Installing Linux Chapter 3: Getting and Managing Software Chapter 4: Managing User Accounts Chapter 5: Managing Disk and Filesystems">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-04T12:34:31.000Z">
+<meta property="article:modified_time" content="2024-07-04T16:10:11.899Z">
+<meta property="article:author" content="xianzhan-yang">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/07/04/Becoming-a-Linux-System-Administrator/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Becoming a Linux System Administrator | How Are You Today?</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">How Are You Today?</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/04/Becoming-a-Linux-System-Administrator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xianzhan-yang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="How Are You Today?">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Becoming a Linux System Administrator
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-07-04 20:34:31" itemprop="dateCreated datePublished" datetime="2024-07-04T20:34:31+08:00">2024-07-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-07-05 00:10:11" itemprop="dateModified" datetime="2024-07-05T00:10:11+08:00">2024-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux-Bible/" itemprop="url" rel="index"><span itemprop="name">Linux Bible</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li>Chapter 1: Learning System Administration</li>
+<li>Chapter 2: Installing Linux</li>
+<li>Chapter 3: Getting and Managing Software</li>
+<li>Chapter 4: Managing User Accounts</li>
+<li>Chapter 5: Managing Disk and Filesystems</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="Chapter-1-Learning-System-Administration"><a href="#Chapter-1-Learning-System-Administration" class="headerlink" title="Chapter 1: Learning System Administration"></a>Chapter 1: Learning System Administration</h2><h3 id="⏳-Understanding-System-Administration"><a href="#⏳-Understanding-System-Administration" class="headerlink" title="⏳ Understanding System Administration"></a>⏳ Understanding System Administration</h3><p>If you are the system administrator of a Linux system, you generally loin as a regular user account and then ask for administrative privileges when you need them. This is oftern done with one of the following:</p>
+<ul>
+<li><p>su command: Often, sud is used to open a shell as root user. After the shell is open, the administrator can run multiple commands and then exit to return to a shell as a regular user.</p>
+</li>
+<li><p>sudo command: With sudo, a regualr user is given root privileges, but only when that user runs the sudo command to run another command. After running that one command with sudo, the user is immediately returned to a shell and acts as the regular user again.</p>
+</li>
+</ul>
+<p>Tasks that can be done only by the root user tend to be those that effect the system as a whole or impact the security or health of the system. Following is a list of common features that a system administrator is expected to manage:</p>
+<ul>
+<li><p>Filesystems: When you first install Linux, the directory structure is set up to make the system usable. However, if users later want to add extra storage or change the filesystem layout outside of their home directory, they need administrative privileges to do that. Also, the root user has permission to access files owned by any user. As a result, the root user can copy, move, or change any other user’s file-a privilege needed to make backup copies of the filesystem for safekeeping.</p>
+</li>
+<li><p>Software installation: Because malicious software can harm your system or make it insecure, you need root privilege to install software so that it is available to all users on your system. Regular users can still install some software in their own directories and can list information about installed system software.</p>
+</li>
+<li><p>User accounts: Only the root user can add and remove user accounts and group accounts.</p>
+</li>
+<li><p>Network interfaces: In the past, the root user had to configure network interfaces and start and stop those interfaces. Now, many Linux desktops allow regular users to start and stop networks interfaces from their desktop using Network Manager. This is partucularly true for wireless network interfaces, which can come and go by location as you move your Linux laptop or handheld device around.</p>
+</li>
+<li><p>Services: Configuring web servers, file servers, doman name servers, mail servers and dozens of other servers requires root privilege, as does starting and stopping those services. Content, such as web pages, can be added to servers by non-root users if you configure your system to allow that. Services are often run as special administrative user accounts, such as apache(for the httpd service) and rpc(for the rpcbind service). So, if someone cracks a service, they can’t get root privilege to other services or system resources.</p>
+</li>
+<li><p>Security feature: Setting up security features, such firewalls and user access lists, is usually done with root privilege. It’s also up to the root user to monitor how the services are being used and to make sure that server resources are not exhausted or abused.</p>
+</li>
+</ul>
+<h3 id="⌛-Using-the-root-User-Account"><a href="#⌛-Using-the-root-User-Account" class="headerlink" title="⌛ Using the root User Account"></a>⌛ Using the root User Account</h3><ul>
+<li><p>Becoming root from the shell(su command)</p>
+</li>
+<li><p>Gaining administractive access with sudo</p>
+</li>
+</ul>
+<p>The sudoers facility is the most common way to provide such privilege. Using sudoers for any users or groups on the system, you can do the following:</p>
+<ul>
+<li><p>Assign root privilege for any command they run with sudo.</p>
+</li>
+<li><p>Assign root privilege for a select set of commands.</p>
+</li>
+<li><p>Give users root privilege without telling them the root password because they only have to provide their own userpassword to gain root privilege.</p>
+</li>
+<li><p>Allow users, if you choose, to run sudo without entering a password at all.</p>
+</li>
+<li><p>Track which users have run administrative commands on your system.(Using su, all you know is that someone with the root password logged in, whereas the sudo command logs which user runs an administrative command).</p>
+</li>
+</ul>
+<h3 id="⏳-Exploring-Adminstrative-Commands-Configuration-Files-and-Log-Files"><a href="#⏳-Exploring-Adminstrative-Commands-Configuration-Files-and-Log-Files" class="headerlink" title="⏳ Exploring Adminstrative Commands, Configuration Files, and Log Files"></a>⏳ Exploring Adminstrative Commands, Configuration Files, and Log Files</h3><ul>
+<li>Administrative commands</li>
+</ul>
+<p>Only the root user is intended to use many administrative commands. When you log in as root(or use su - from the shell to become root), your $PATH variable is set to include some directories that contain commands for the root user. In the past, these have included the following:</p>
+<p>&#x2F;sbin: Originally contained commands needed to boot your system, including commands for checking filesystems(fsck) and turning on swap devices(swapon).</p>
+<p>&#x2F;usr&#x2F;sbin: Originally contained commands for such things as managing user accounts(such as useradd) and checking processes that are holding files open(lsof). Commands that run as daemon processes are also contained in this directory. Daemon processes are processes that run in the background, waiting for service requests such as those to access a printer or a web page.</p>
+<ul>
+<li>Administrative configuration files</li>
+</ul>
+<p>Following are descriptions of directories(and subdirectories) that contain usefull configuration files. The descriptions are followed by some individual configuration files in <strong>&#x2F;etc</strong> that are of particular interest. Viewing the contents of Linux configuration files can teach you a lot about administering Linux systems.</p>
+<p>$HOME: All users store in their home directories information that directs how their login accounts behave. Many configuration files are stored directly in each user’s home directory and begin with a dot, so they don’t appear in a user’s directory when you use a standard ls command.</p>
+<p>&#x2F;etc: This directory contains most of the basic Linux system configuration files.</p>
+<p>&#x2F;etc&#x2F;cron*: Directories in this set contain files that define how the crond utility runs applications on a daily(cron.daily),hourly(cron.hourly),monthly(cron.monthly), or weekly(cron.weekly) schedule.</p>
+<p>&#x2F;etc&#x2F;cups: Contains files used to configure the CUPs printing service.</p>
+<p>&#x2F;etc&#x2F;default: Contains files that set default values for various untilities. For example, the file for the useradd command defines the default group number, home directory, password expiration date, shell, and skeleton directory(&#x2F;etc&#x2F;skel) used when creating a new user account.</p>
+<p>&#x2F;etc&#x2F;httpd: Contains a variety of files used to configure the behavior of your Apache web server.</p>
+<p>&#x2F;etc&#x2F;postfix: Contains configuration files for the postfix mail transport agent.</p>
+<p>&#x2F;etc&#x2F;ppp: Contains serveral configuration files used to set up Point-to-Point Protocol(PPP) so that you can have your computer dial out to tthe Internet.</p>
+<p>&#x2F;etc&#x2F;rc?.d: There is a separate rc?.d directory for each valid system state: rc0.d(shutdown state), rc1.d(single-user state), rc2.d(multiuser state), rc3.d(muliuser plus networking state), rc4.d(user-defined state), rc5.d(multiuser, networking, plus GUI login state), and rc6.d(reboot state). These directories are maintained for compatibility with old UNIX SystemV init services.</p>
+<p>&#x2F;etc&#x2F;security: Contains files that set a variety of default security conditions for your computer, basically defining how authentication is done. These files are part of the pam package.</p>
+<p>&#x2F;etc&#x2F;skel: Any file contained in this directory are automatically copied to a user’s home directory when that user is added to the system. By default, most of these file are dot(.) files, such as .kde and .bashrc.</p>
+<p>&#x2F;etc&#x2F;sysconfig: Contains important system configuration files that are created and maintained by various services(including firewalld, samba, and most networking services). These files are critical for Linux distributions, such as Fedora and RHEL, that use GUI administration tools but are not used on other Linux systems at all.</p>
+<p>&#x2F;etc&#x2F;systemd: Contains files associated with systemed facility, for managing the boot process and system services. In particular, when you run systemctl commands to enable and disable services, files that make that happen are stored in subdirectories of the &#x2F;etc&#x2F;systemd system directory.</p>
+<p>&#x2F;etc&#x2F;xinetd.d: Contains a set of files, each of which defines an on-demand network service that the xinetd daemon listens for on a particular port. When the xinetd daemon process receives a request for a service, it uses the information in these files to determine which daemon processes to start to handle the request.</p>
+<p>The following are some interesting configuration files in &#x2F;etc:</p>
+<p>aliases: Can contain distribution lists used by the Linux mail services.(This file is located in &#x2F;etc&#x2F;mail in Ubuntu when you install the sendmail package.)</p>
+<p>bashrc: Sets system-wide defaults for bash shell users.(This may be called bash.bashrc on some Linux distributions.)</p>
+<p>crontab: Sets times for running automated tasks and variables associated with the cron facility(such as the SHELL and PATH associated with cron).</p>
+<p>csh.cshrc: Sets system-wide defaults for csh users.</p>
+<p>exports: Contains a list of local directories that are avialable to be shared by remote computers using the Network File System(NFS).</p>
+<p>fstab: Identifile the devices for common storage media(hard disk, DVD, CD-ROM, and so on) and locations where they are mounted in the Linux system. This is used by the mount command to choose which filesystems to mount when the system first boots.</p>
+<p>group: Identifies group names and group IDs(GIDs) that are defined on the system. Group permissions in Linux are defined by the second of three sets of rwx bits associated with each file and directory.</p>
+<p>gshadow: Contains shadow passwords for groups:</p>
+<p>host.conf: Used by older applications to set the locations in which doman names are searched for on TCP&#x2F;IP networks. By default, the local hosts file is searched and then any name server entries in resolv.conf.</p>
+<p>hostname: Contains the hostname for the local system.</p>
+<p>hosts: Contains IP addresses and hostnames that you can reach from you computer.(Usually this file is used just to store names of computers on your LAN or small private network.)</p>
+<p>inittab: On earlier Linux systems, contained information that defined which programs start and stop when Linux boots, shuts down, or goes into different states in between. This configuration file was the first one read when Linux started the init process. This file is no longer used on Linux systems that support systemd.</p>
+<p>mtab: Contains a list of filesystems that are currently mounted.</p>
+<p>mtools.conf: Contains settings used by DOS toolsin Linux.</p>
+<p>named.conf: Contains DNS setting if you are running your own DNS server(bind or bind9 package).</p>
+<p>nsswitch.conf: Contains name service switch settings, for identifying where critical system information(user accounts, hostname-to-address mappings, and so on) comes from (local host or via network services).</p>
+<p>ntp.conf: Includes information needed to run the Network Time Protocol(NTP).</p>
+<p>passwd: Stores account information for all valid users on the local system. Also includes other information, such as the home directory and default shell.(Rarely includes the user passwords themselves, which are typically stored in the &#x2F;etc&#x2F;shadow file.)</p>
+<p>printcap: Contains definitions for the printers configured for your computer.(if the printcap file doesn’t exist, look for printer information in the &#x2F;etc&#x2F;cups directory.)</p>
+<p>profile: Sets system-wide environment and startup programs for all users. This file is read when the user logs in.</p>
+<p>protocols: Sets protocol numbbers and names for a variety of Internet services.</p>
+<p>rpc: Defines remote procedure call names and numbers.</p>
+<p>services: Defines TCP&#x2F;IP and UDP service names and their port assignments.</p>
+<p>shadow: Contains encrypted passwords for users who are defined in the passwd file.(This is viewed as a more secure way to store passwords than the original encrypted password in the passwd file. The passwd file needs to be publicly readable, whereas the shadow file can be unreadable by all but the root user.)</p>
+<p>shells: Lists the shell command-line interpreters(bash, sh, csh and so on) that are available on the system as well as their locations.</p>
+<p>sudoers: Sets commands that can be run by users, who may not otherwise have permission to run the command, using the sudo command. In particular, this file is used to provide selected users with root permission.</p>
+<p>rsyslog.conf: Defines what logging messages are gathered by the rsyslogd daemon and in which files they are stored.(Typically, log messages are stored in files contained in the &#x2F;var&#x2F;log directory.)</p>
+<p>xinetd.conf: Contains simple configuration information used by the xinetd daemon process. This file mostly points to the &#x2F;etc&#x2F;xinetd.d directory for information about individual services.</p>
+<h3 id="Using-Other-Administrative-Accounts"><a href="#Using-Other-Administrative-Accounts" class="headerlink" title="Using Other Administrative Accounts"></a>Using Other Administrative Accounts</h3><h3 id="Checking-and-Configuring-Hardware"><a href="#Checking-and-Configuring-Hardware" class="headerlink" title="Checking and Configuring Hardware"></a>Checking and Configuring Hardware</h3><ul>
+<li><p>Checking your hardware</p>
+</li>
+<li><p>Managing removable hardware</p>
+</li>
+<li><p>Working with loadable modules</p>
+</li>
+</ul>
+<h2 id="Chapter-2-Install-Linux"><a href="#Chapter-2-Install-Linux" class="headerlink" title="Chapter 2: Install Linux"></a>Chapter 2: Install Linux</h2><h3 id="Choosing-a-Computer"><a href="#Choosing-a-Computer" class="headerlink" title="Choosing a Computer"></a>Choosing a Computer</h3><h3 id="Installing-Fedora-from-Live-Media"><a href="#Installing-Fedora-from-Live-Media" class="headerlink" title="Installing Fedora from Live Media"></a>Installing Fedora from Live Media</h3><h3 id="Installing-Red-Hat-Enterprise-Linux-from-Installation-Media"><a href="#Installing-Red-Hat-Enterprise-Linux-from-Installation-Media" class="headerlink" title="Installing Red Hat Enterprise Linux from Installation Media"></a>Installing Red Hat Enterprise Linux from Installation Media</h3><h3 id="Understanding-Cloud-Based-Installations"><a href="#Understanding-Cloud-Based-Installations" class="headerlink" title="Understanding Cloud-Based Installations"></a>Understanding Cloud-Based Installations</h3><h3 id="Installing-Linux-in-the-Enterprise"><a href="#Installing-Linux-in-the-Enterprise" class="headerlink" title="Installing Linux in the Enterprise"></a>Installing Linux in the Enterprise</h3><h3 id="Exploring-Common-Installation-Topics"><a href="#Exploring-Common-Installation-Topics" class="headerlink" title="Exploring Common Installation Topics"></a>Exploring Common Installation Topics</h3><ul>
+<li><p>Upgrading or installing from scratch</p>
+</li>
+<li><p>Dual booting</p>
+</li>
+<li><p>Installing Linux to run virtually</p>
+</li>
+<li><p>Using installation boot options</p>
+</li>
+<li><p>Using specialized storge</p>
+</li>
+<li><p>Using the GRUB boot loader</p>
+</li>
+</ul>
+<h2 id="Chapter-3-Getting-and-Managing-Software"><a href="#Chapter-3-Getting-and-Managing-Software" class="headerlink" title="Chapter 3: Getting and Managing Software"></a>Chapter 3: Getting and Managing Software</h2><h3 id="Understanding-Linux-RPM-and-DEB-Software-Packaging"><a href="#Understanding-Linux-RPM-and-DEB-Software-Packaging" class="headerlink" title="Understanding Linux RPM and DEB Software Packaging"></a>Understanding Linux RPM and DEB Software Packaging</h3><h3 id="Managing-RPM-Packages-with-YUM"><a href="#Managing-RPM-Packages-with-YUM" class="headerlink" title="Managing RPM Packages with YUM"></a>Managing RPM Packages with YUM</h3><h3 id="Installing-Querying-and-Verifying-Software-with-the-rpm-Command"><a href="#Installing-Querying-and-Verifying-Software-with-the-rpm-Command" class="headerlink" title="Installing, Querying, and Verifying Software with the rpm Command"></a>Installing, Querying, and Verifying Software with the rpm Command</h3><h3 id="Managing-Software-in-the-Enterprise"><a href="#Managing-Software-in-the-Enterprise" class="headerlink" title="Managing Software in the Enterprise"></a>Managing Software in the Enterprise</h3><h2 id="Chapter-4-Managing-User-Accounts"><a href="#Chapter-4-Managing-User-Accounts" class="headerlink" title="Chapter 4: Managing User Accounts"></a>Chapter 4: Managing User Accounts</h2><h3 id="Creating-User-Accounts"><a href="#Creating-User-Accounts" class="headerlink" title="Creating User Accounts"></a>Creating User Accounts</h3><h3 id="Understanding-Group-Accounts"><a href="#Understanding-Group-Accounts" class="headerlink" title="Understanding Group Accounts"></a>Understanding Group Accounts</h3><h3 id="Managing-Users-in-the-Enterprise"><a href="#Managing-Users-in-the-Enterprise" class="headerlink" title="Managing Users in the Enterprise"></a>Managing Users in the Enterprise</h3><h3 id="Centralizing-User-Accounts"><a href="#Centralizing-User-Accounts" class="headerlink" title="Centralizing User Accounts"></a>Centralizing User Accounts</h3><h2 id="Chapter-5-Managing-Disks-and-Filesystems"><a href="#Chapter-5-Managing-Disks-and-Filesystems" class="headerlink" title="Chapter 5 Managing Disks and Filesystems"></a>Chapter 5 Managing Disks and Filesystems</h2><h3 id="Understanding-Disk-Storage"><a href="#Understanding-Disk-Storage" class="headerlink" title="Understanding Disk Storage"></a>Understanding Disk Storage</h3><h3 id="Partitioning-Hard-Disks"><a href="#Partitioning-Hard-Disks" class="headerlink" title="Partitioning Hard Disks"></a>Partitioning Hard Disks</h3><h3 id="Using-Logical-Volume-Manager-Partitions"><a href="#Using-Logical-Volume-Manager-Partitions" class="headerlink" title="Using Logical Volume Manager Partitions"></a>Using Logical Volume Manager Partitions</h3><h3 id="Mounting-Filesystems"><a href="#Mounting-Filesystems" class="headerlink" title="Mounting Filesystems"></a>Mounting Filesystems</h3><h3 id="Using-the-mkfs-Command-to-Create-a-Filesystem"><a href="#Using-the-mkfs-Command-to-Create-a-Filesystem" class="headerlink" title="Using the mkfs Command to Create a Filesystem"></a>Using the mkfs Command to Create a Filesystem</h3>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/06/25/Becoming-a-Linux-Power-User/" rel="prev" title="Becoming a Linux Power User">
+      <i class="fa fa-chevron-left"></i> Becoming a Linux Power User
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1-Learning-System-Administration"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1: Learning System Administration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8F%B3-Understanding-System-Administration"><span class="nav-number">1.1.</span> <span class="nav-text">⏳ Understanding System Administration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8C%9B-Using-the-root-User-Account"><span class="nav-number">1.2.</span> <span class="nav-text">⌛ Using the root User Account</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%8F%B3-Exploring-Adminstrative-Commands-Configuration-Files-and-Log-Files"><span class="nav-number">1.3.</span> <span class="nav-text">⏳ Exploring Adminstrative Commands, Configuration Files, and Log Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Other-Administrative-Accounts"><span class="nav-number">1.4.</span> <span class="nav-text">Using Other Administrative Accounts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Checking-and-Configuring-Hardware"><span class="nav-number">1.5.</span> <span class="nav-text">Checking and Configuring Hardware</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2-Install-Linux"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2: Install Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Choosing-a-Computer"><span class="nav-number">2.1.</span> <span class="nav-text">Choosing a Computer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Installing-Fedora-from-Live-Media"><span class="nav-number">2.2.</span> <span class="nav-text">Installing Fedora from Live Media</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Installing-Red-Hat-Enterprise-Linux-from-Installation-Media"><span class="nav-number">2.3.</span> <span class="nav-text">Installing Red Hat Enterprise Linux from Installation Media</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Understanding-Cloud-Based-Installations"><span class="nav-number">2.4.</span> <span class="nav-text">Understanding Cloud-Based Installations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Installing-Linux-in-the-Enterprise"><span class="nav-number">2.5.</span> <span class="nav-text">Installing Linux in the Enterprise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploring-Common-Installation-Topics"><span class="nav-number">2.6.</span> <span class="nav-text">Exploring Common Installation Topics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-Getting-and-Managing-Software"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3: Getting and Managing Software</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Understanding-Linux-RPM-and-DEB-Software-Packaging"><span class="nav-number">3.1.</span> <span class="nav-text">Understanding Linux RPM and DEB Software Packaging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Managing-RPM-Packages-with-YUM"><span class="nav-number">3.2.</span> <span class="nav-text">Managing RPM Packages with YUM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Installing-Querying-and-Verifying-Software-with-the-rpm-Command"><span class="nav-number">3.3.</span> <span class="nav-text">Installing, Querying, and Verifying Software with the rpm Command</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Managing-Software-in-the-Enterprise"><span class="nav-number">3.4.</span> <span class="nav-text">Managing Software in the Enterprise</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4-Managing-User-Accounts"><span class="nav-number">4.</span> <span class="nav-text">Chapter 4: Managing User Accounts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-User-Accounts"><span class="nav-number">4.1.</span> <span class="nav-text">Creating User Accounts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Understanding-Group-Accounts"><span class="nav-number">4.2.</span> <span class="nav-text">Understanding Group Accounts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Managing-Users-in-the-Enterprise"><span class="nav-number">4.3.</span> <span class="nav-text">Managing Users in the Enterprise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Centralizing-User-Accounts"><span class="nav-number">4.4.</span> <span class="nav-text">Centralizing User Accounts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5-Managing-Disks-and-Filesystems"><span class="nav-number">5.</span> <span class="nav-text">Chapter 5 Managing Disks and Filesystems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Understanding-Disk-Storage"><span class="nav-number">5.1.</span> <span class="nav-text">Understanding Disk Storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partitioning-Hard-Disks"><span class="nav-number">5.2.</span> <span class="nav-text">Partitioning Hard Disks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Logical-Volume-Manager-Partitions"><span class="nav-number">5.3.</span> <span class="nav-text">Using Logical Volume Manager Partitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mounting-Filesystems"><span class="nav-number">5.4.</span> <span class="nav-text">Mounting Filesystems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-the-mkfs-Command-to-Create-a-Filesystem"><span class="nav-number">5.5.</span> <span class="nav-text">Using the mkfs Command to Create a Filesystem</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xianzhan-yang"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xianzhan-yang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xianzhan-yang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xianzhan-yang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xianzhan-yang</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
