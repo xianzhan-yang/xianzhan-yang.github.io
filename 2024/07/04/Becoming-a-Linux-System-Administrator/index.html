@@ -28,7 +28,7 @@
 <meta property="og:description" content="Chapter 1: Learning System Administration Chapter 2: Installing Linux Chapter 3: Getting and Managing Software Chapter 4: Managing User Accounts Chapter 5: Managing Disk and Filesystems">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-04T12:34:31.000Z">
-<meta property="article:modified_time" content="2024-07-04T16:10:11.899Z">
+<meta property="article:modified_time" content="2024-07-07T04:34:50.180Z">
 <meta property="article:author" content="xianzhan-yang">
 <meta name="twitter:card" content="summary">
 
@@ -185,7 +185,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-07-05 00:10:11" itemprop="dateModified" datetime="2024-07-05T00:10:11+08:00">2024-07-05</time>
+                <time title="Modified: 2024-07-07 12:34:50" itemprop="dateModified" datetime="2024-07-07T12:34:50+08:00">2024-07-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -218,34 +218,62 @@
 <span id="more"></span>
 
 <h2 id="Chapter-1-Learning-System-Administration"><a href="#Chapter-1-Learning-System-Administration" class="headerlink" title="Chapter 1: Learning System Administration"></a>Chapter 1: Learning System Administration</h2><h3 id="⏳-Understanding-System-Administration"><a href="#⏳-Understanding-System-Administration" class="headerlink" title="⏳ Understanding System Administration"></a>⏳ Understanding System Administration</h3><p>If you are the system administrator of a Linux system, you generally loin as a regular user account and then ask for administrative privileges when you need them. This is oftern done with one of the following:</p>
-<ul>
-<li><p>su command: Often, sud is used to open a shell as root user. After the shell is open, the administrator can run multiple commands and then exit to return to a shell as a regular user.</p>
-</li>
-<li><p>sudo command: With sudo, a regualr user is given root privileges, but only when that user runs the sudo command to run another command. After running that one command with sudo, the user is immediately returned to a shell and acts as the regular user again.</p>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>su command</td>
+<td>Often, sud is used to open a shell as root user. After the shell is open, the administrator can run multiple commands and then exit to return to a shell as a regular user</td>
+</tr>
+<tr>
+<td>sudo command</td>
+<td>With sudo, a regualr user is given root privileges, but only when that user runs the sudo command to run another command. After running that one command with sudo, the user is immediately returned to a shell and acts as the regular user again</td>
+</tr>
+</tbody></table>
 <p>Tasks that can be done only by the root user tend to be those that effect the system as a whole or impact the security or health of the system. Following is a list of common features that a system administrator is expected to manage:</p>
-<ul>
-<li><p>Filesystems: When you first install Linux, the directory structure is set up to make the system usable. However, if users later want to add extra storage or change the filesystem layout outside of their home directory, they need administrative privileges to do that. Also, the root user has permission to access files owned by any user. As a result, the root user can copy, move, or change any other user’s file-a privilege needed to make backup copies of the filesystem for safekeeping.</p>
-</li>
-<li><p>Software installation: Because malicious software can harm your system or make it insecure, you need root privilege to install software so that it is available to all users on your system. Regular users can still install some software in their own directories and can list information about installed system software.</p>
-</li>
-<li><p>User accounts: Only the root user can add and remove user accounts and group accounts.</p>
-</li>
-<li><p>Network interfaces: In the past, the root user had to configure network interfaces and start and stop those interfaces. Now, many Linux desktops allow regular users to start and stop networks interfaces from their desktop using Network Manager. This is partucularly true for wireless network interfaces, which can come and go by location as you move your Linux laptop or handheld device around.</p>
-</li>
-<li><p>Services: Configuring web servers, file servers, doman name servers, mail servers and dozens of other servers requires root privilege, as does starting and stopping those services. Content, such as web pages, can be added to servers by non-root users if you configure your system to allow that. Services are often run as special administrative user accounts, such as apache(for the httpd service) and rpc(for the rpcbind service). So, if someone cracks a service, they can’t get root privilege to other services or system resources.</p>
-</li>
-<li><p>Security feature: Setting up security features, such firewalls and user access lists, is usually done with root privilege. It’s also up to the root user to monitor how the services are being used and to make sure that server resources are not exhausted or abused.</p>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Filesystems</td>
+<td>When you first install Linux, the directory structure is set up to make the system usable. However, if users later want to add extra storage or change the filesystem layout outside of their home directory, they need administrative privileges to do that. Also, the root user has permission to access files owned by any user. As a result, the root user can copy, move, or change any other user’s file-a privilege needed to make backup copies of the filesystem for safekeeping</td>
+</tr>
+<tr>
+<td>Software installation</td>
+<td>Because malicious software can harm your system or make it insecure, you need root privilege to install software so that it is available to all users on your system. Regular users can still install some software in their own directories and can list information about installed system software</td>
+</tr>
+<tr>
+<td>User accounts</td>
+<td>Only the root user can add and remove user accounts and group accounts</td>
+</tr>
+<tr>
+<td>Network interfaces</td>
+<td>In the past, the root user had to configure network interfaces and start and stop those interfaces. Now, many Linux desktops allow regular users to start and stop networks interfaces from their desktop using Network Manager. This is partucularly true for wireless network interfaces, which can come and go by location as you move your Linux laptop or handheld device around</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>Configuring web servers, file servers, doman name servers, mail servers and dozens of other servers requires root privilege, as does starting and stopping those services. Content, such as web pages, can be added to servers by non-root users if you configure your system to allow that. Services are often run as special administrative user accounts, such as apache(for the httpd service) and rpc(for the rpcbind service). So, if someone cracks a service, they can’t get root privilege to other services or system resources</td>
+</tr>
+<tr>
+<td>Security feature</td>
+<td>Setting up security features, such firewalls and user access lists, is usually done with root privilege. It’s also up to the root user to monitor how the services are being used and to make sure that server resources are not exhausted or abused</td>
+</tr>
+</tbody></table>
 <h3 id="⌛-Using-the-root-User-Account"><a href="#⌛-Using-the-root-User-Account" class="headerlink" title="⌛ Using the root User Account"></a>⌛ Using the root User Account</h3><ul>
 <li><p>Becoming root from the shell(su command)</p>
 </li>
 <li><p>Gaining administractive access with sudo</p>
 </li>
 </ul>
-<p>The sudoers facility is the most common way to provide such privilege. Using sudoers for any users or groups on the system, you can do the following:</p>
+<p><strong>The sudoers facility is the most common way to provide such privilege. Using sudoers for any users or groups on the system, you can do the following:</strong></p>
 <ul>
 <li><p>Assign root privilege for any command they run with sudo.</p>
 </li>
@@ -262,55 +290,207 @@
 <li>Administrative commands</li>
 </ul>
 <p>Only the root user is intended to use many administrative commands. When you log in as root(or use su - from the shell to become root), your $PATH variable is set to include some directories that contain commands for the root user. In the past, these have included the following:</p>
-<p>&#x2F;sbin: Originally contained commands needed to boot your system, including commands for checking filesystems(fsck) and turning on swap devices(swapon).</p>
-<p>&#x2F;usr&#x2F;sbin: Originally contained commands for such things as managing user accounts(such as useradd) and checking processes that are holding files open(lsof). Commands that run as daemon processes are also contained in this directory. Daemon processes are processes that run in the background, waiting for service requests such as those to access a printer or a web page.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Descript</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;sbin</td>
+<td>Originally contained commands needed to boot your system, including commands for checking filesystems(fsck) and turning on swap devices(swapon)</td>
+</tr>
+<tr>
+<td>&#x2F;usr&#x2F;sbin</td>
+<td>Originally contained commands for such things as managing user accounts(such as useradd) and checking processes that are holding files open(lsof). Commands that run as daemon processes are also contained in this directory. Daemon processes are processes that run in the background, waiting for service requests such as those to access a printer or a web page</td>
+</tr>
+</tbody></table>
 <ul>
 <li>Administrative configuration files</li>
 </ul>
-<p>Following are descriptions of directories(and subdirectories) that contain usefull configuration files. The descriptions are followed by some individual configuration files in <strong>&#x2F;etc</strong> that are of particular interest. Viewing the contents of Linux configuration files can teach you a lot about administering Linux systems.</p>
-<p>$HOME: All users store in their home directories information that directs how their login accounts behave. Many configuration files are stored directly in each user’s home directory and begin with a dot, so they don’t appear in a user’s directory when you use a standard ls command.</p>
-<p>&#x2F;etc: This directory contains most of the basic Linux system configuration files.</p>
-<p>&#x2F;etc&#x2F;cron*: Directories in this set contain files that define how the crond utility runs applications on a daily(cron.daily),hourly(cron.hourly),monthly(cron.monthly), or weekly(cron.weekly) schedule.</p>
-<p>&#x2F;etc&#x2F;cups: Contains files used to configure the CUPs printing service.</p>
-<p>&#x2F;etc&#x2F;default: Contains files that set default values for various untilities. For example, the file for the useradd command defines the default group number, home directory, password expiration date, shell, and skeleton directory(&#x2F;etc&#x2F;skel) used when creating a new user account.</p>
-<p>&#x2F;etc&#x2F;httpd: Contains a variety of files used to configure the behavior of your Apache web server.</p>
-<p>&#x2F;etc&#x2F;postfix: Contains configuration files for the postfix mail transport agent.</p>
-<p>&#x2F;etc&#x2F;ppp: Contains serveral configuration files used to set up Point-to-Point Protocol(PPP) so that you can have your computer dial out to tthe Internet.</p>
-<p>&#x2F;etc&#x2F;rc?.d: There is a separate rc?.d directory for each valid system state: rc0.d(shutdown state), rc1.d(single-user state), rc2.d(multiuser state), rc3.d(muliuser plus networking state), rc4.d(user-defined state), rc5.d(multiuser, networking, plus GUI login state), and rc6.d(reboot state). These directories are maintained for compatibility with old UNIX SystemV init services.</p>
-<p>&#x2F;etc&#x2F;security: Contains files that set a variety of default security conditions for your computer, basically defining how authentication is done. These files are part of the pam package.</p>
-<p>&#x2F;etc&#x2F;skel: Any file contained in this directory are automatically copied to a user’s home directory when that user is added to the system. By default, most of these file are dot(.) files, such as .kde and .bashrc.</p>
-<p>&#x2F;etc&#x2F;sysconfig: Contains important system configuration files that are created and maintained by various services(including firewalld, samba, and most networking services). These files are critical for Linux distributions, such as Fedora and RHEL, that use GUI administration tools but are not used on other Linux systems at all.</p>
-<p>&#x2F;etc&#x2F;systemd: Contains files associated with systemed facility, for managing the boot process and system services. In particular, when you run systemctl commands to enable and disable services, files that make that happen are stored in subdirectories of the &#x2F;etc&#x2F;systemd system directory.</p>
-<p>&#x2F;etc&#x2F;xinetd.d: Contains a set of files, each of which defines an on-demand network service that the xinetd daemon listens for on a particular port. When the xinetd daemon process receives a request for a service, it uses the information in these files to determine which daemon processes to start to handle the request.</p>
+<p>Following are descriptions of directories(and subdirectories) that contain usefull configuration files. The descriptions are followed by some individual configuration files in &#x2F;etc that are of particular interest. Viewing the contents of Linux configuration files can teach you a lot about administering Linux systems.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$HOME</td>
+<td>All users store in their home directories information that directs how their login accounts behave. Many configuration files are stored directly in each user’s home directory and begin with a dot, so they don’t appear in a user’s directory when you use a standard ls command</td>
+</tr>
+<tr>
+<td>&#x2F;etc</td>
+<td>This directory contains most of the basic Linux system configuration files</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;cron*</td>
+<td>Directories in this set contain files that define how the crond utility runs applications on a daily(cron.daily),hourly(cron.hourly),monthly(cron.monthly), or weekly(cron.weekly) schedule</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;cups</td>
+<td>Contains files used to configure the CUPs printing service</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;default</td>
+<td>Contains files that set default values for various untilities. For example, the file for the useradd command defines the default group number, home directory, password expiration date, shell, and skeleton directory(&#x2F;etc&#x2F;skel) used when creating a new user account</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;httpd</td>
+<td>Contains a variety of files used to configure the behavior of your Apache web server</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;postfix</td>
+<td>Contains configuration files for the postfix mail transport agent</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;ppp</td>
+<td>Contains serveral configuration files used to set up Point-to-Point Protocol(PPP) so that you can have your computer dial out to tthe Internet</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;rc?.d</td>
+<td>There is a separate rc?.d directory for each valid system state: rc0.d(shutdown state), rc1.d(single-user state), rc2.d(multiuser state), rc3.d(muliuser plus networking state), rc4.d(user-defined state), rc5.d(multiuser, networking, plus GUI login state), and rc6.d(reboot state). These directories are maintained for compatibility with old UNIX SystemV init services</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;security</td>
+<td>Contains files that set a variety of default security conditions for your computer, basically defining how authentication is done. These files are part of the pam package</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;skel</td>
+<td>Any file contained in this directory are automatically copied to a user’s home directory when that user is added to the system. By default, most of these file are dot(.) files, such as .kde and .bashrc</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;sysconfig</td>
+<td>Contains important system configuration files that are created and maintained by various services(including firewalld, samba, and most networking services). These files are critical for Linux distributions, such as Fedora and RHEL, that use GUI administration tools but are not used on other Linux systems at all</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;systemd</td>
+<td>Contains files associated with systemed facility, for managing the boot process and system services. In particular, when you run systemctl commands to enable and disable services, files that make that happen are stored in subdirectories of the &#x2F;etc&#x2F;systemd system directory</td>
+</tr>
+<tr>
+<td>&#x2F;etc&#x2F;xinetd.d</td>
+<td>Contains a set of files, each of which defines an on-demand network service that the xinetd daemon listens for on a particular port. When the xinetd daemon process receives a request for a service, it uses the information in these files to determine which daemon processes to start to handle the request</td>
+</tr>
+</tbody></table>
 <p>The following are some interesting configuration files in &#x2F;etc:</p>
-<p>aliases: Can contain distribution lists used by the Linux mail services.(This file is located in &#x2F;etc&#x2F;mail in Ubuntu when you install the sendmail package.)</p>
-<p>bashrc: Sets system-wide defaults for bash shell users.(This may be called bash.bashrc on some Linux distributions.)</p>
-<p>crontab: Sets times for running automated tasks and variables associated with the cron facility(such as the SHELL and PATH associated with cron).</p>
-<p>csh.cshrc: Sets system-wide defaults for csh users.</p>
-<p>exports: Contains a list of local directories that are avialable to be shared by remote computers using the Network File System(NFS).</p>
-<p>fstab: Identifile the devices for common storage media(hard disk, DVD, CD-ROM, and so on) and locations where they are mounted in the Linux system. This is used by the mount command to choose which filesystems to mount when the system first boots.</p>
-<p>group: Identifies group names and group IDs(GIDs) that are defined on the system. Group permissions in Linux are defined by the second of three sets of rwx bits associated with each file and directory.</p>
-<p>gshadow: Contains shadow passwords for groups:</p>
-<p>host.conf: Used by older applications to set the locations in which doman names are searched for on TCP&#x2F;IP networks. By default, the local hosts file is searched and then any name server entries in resolv.conf.</p>
-<p>hostname: Contains the hostname for the local system.</p>
-<p>hosts: Contains IP addresses and hostnames that you can reach from you computer.(Usually this file is used just to store names of computers on your LAN or small private network.)</p>
-<p>inittab: On earlier Linux systems, contained information that defined which programs start and stop when Linux boots, shuts down, or goes into different states in between. This configuration file was the first one read when Linux started the init process. This file is no longer used on Linux systems that support systemd.</p>
-<p>mtab: Contains a list of filesystems that are currently mounted.</p>
-<p>mtools.conf: Contains settings used by DOS toolsin Linux.</p>
-<p>named.conf: Contains DNS setting if you are running your own DNS server(bind or bind9 package).</p>
-<p>nsswitch.conf: Contains name service switch settings, for identifying where critical system information(user accounts, hostname-to-address mappings, and so on) comes from (local host or via network services).</p>
-<p>ntp.conf: Includes information needed to run the Network Time Protocol(NTP).</p>
-<p>passwd: Stores account information for all valid users on the local system. Also includes other information, such as the home directory and default shell.(Rarely includes the user passwords themselves, which are typically stored in the &#x2F;etc&#x2F;shadow file.)</p>
-<p>printcap: Contains definitions for the printers configured for your computer.(if the printcap file doesn’t exist, look for printer information in the &#x2F;etc&#x2F;cups directory.)</p>
-<p>profile: Sets system-wide environment and startup programs for all users. This file is read when the user logs in.</p>
-<p>protocols: Sets protocol numbbers and names for a variety of Internet services.</p>
-<p>rpc: Defines remote procedure call names and numbers.</p>
-<p>services: Defines TCP&#x2F;IP and UDP service names and their port assignments.</p>
-<p>shadow: Contains encrypted passwords for users who are defined in the passwd file.(This is viewed as a more secure way to store passwords than the original encrypted password in the passwd file. The passwd file needs to be publicly readable, whereas the shadow file can be unreadable by all but the root user.)</p>
-<p>shells: Lists the shell command-line interpreters(bash, sh, csh and so on) that are available on the system as well as their locations.</p>
-<p>sudoers: Sets commands that can be run by users, who may not otherwise have permission to run the command, using the sudo command. In particular, this file is used to provide selected users with root permission.</p>
-<p>rsyslog.conf: Defines what logging messages are gathered by the rsyslogd daemon and in which files they are stored.(Typically, log messages are stored in files contained in the &#x2F;var&#x2F;log directory.)</p>
-<p>xinetd.conf: Contains simple configuration information used by the xinetd daemon process. This file mostly points to the &#x2F;etc&#x2F;xinetd.d directory for information about individual services.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aliases</td>
+<td>Can contain distribution lists used by the Linux mail services.(This file is located in &#x2F;etc&#x2F;mail in Ubuntu when you install the sendmail package)</td>
+</tr>
+<tr>
+<td>bashrc</td>
+<td>Sets system-wide defaults for bash shell users.(This may be called bash.bashrc on some Linux distributions.)</td>
+</tr>
+<tr>
+<td>crontab</td>
+<td>Sets times for running automated tasks and variables associated with the cron facility(such as the SHELL and PATH associated with cron)</td>
+</tr>
+<tr>
+<td>csh.cshrc</td>
+<td>Sets system-wide defaults for csh users</td>
+</tr>
+<tr>
+<td>exports</td>
+<td>Contains a list of local directories that are avialable to be shared by remote computers using the Network File System(NFS)</td>
+</tr>
+<tr>
+<td>fstab</td>
+<td>Identifile the devices for common storage media(hard disk, DVD, CD-ROM, and so on) and locations where they are mounted in the Linux system. This is used by the mount command to choose which filesystems to mount when the system first boots</td>
+</tr>
+<tr>
+<td>group</td>
+<td>Identifies group names and group IDs(GIDs) that are defined on the system. Group permissions in Linux are defined by the second of three sets of rwx bits associated with each file and directory</td>
+</tr>
+<tr>
+<td>gshadow</td>
+<td>Contains shadow passwords for groups</td>
+</tr>
+<tr>
+<td>host.conf</td>
+<td>Used by older applications to set the locations in which doman names are searched for on TCP&#x2F;IP networks. By default, the local hosts file is searched and then any name server entries in resolv.conf</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>Contains the hostname for the local system</td>
+</tr>
+<tr>
+<td>hosts</td>
+<td>Contains IP addresses and hostnames that you can reach from you computer.(Usually this file is used just to store names of computers on your LAN or small private network.)</td>
+</tr>
+<tr>
+<td>inittab</td>
+<td>On earlier Linux systems, contained information that defined which programs start and stop when Linux boots, shuts down, or goes into different states in between. This configuration file was the first one read when Linux started the init process. This file is no longer used on Linux systems that support systemd</td>
+</tr>
+<tr>
+<td>mtools.conf</td>
+<td>Contains settings used by DOS toolsin Linux</td>
+</tr>
+<tr>
+<td>named.conf</td>
+<td>Contains DNS setting if you are running your own DNS server(bind or bind9 package)</td>
+</tr>
+<tr>
+<td>nsswitch.conf</td>
+<td>Contains name service switch settings, for identifying where critical system information(user accounts, hostname-to-address mappings, and so on) comes from (local host or via network services)</td>
+</tr>
+<tr>
+<td>ntp.conf</td>
+<td>Includes information needed to run the Network Time Protocol(NTP)</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>Stores account information for all valid users on the local system. Also includes other information, such as the home directory and default shell.(Rarely includes the user passwords themselves, which are typically stored in the &#x2F;etc&#x2F;shadow file.)</td>
+</tr>
+<tr>
+<td>printcap</td>
+<td>Contains definitions for the printers configured for your computer.(if the printcap file doesn’t exist, look for printer information in the &#x2F;etc&#x2F;cups directory.)</td>
+</tr>
+<tr>
+<td>profile</td>
+<td>Sets system-wide environment and startup programs for all users. This file is read when the user logs in</td>
+</tr>
+<tr>
+<td>protocols</td>
+<td>Sets protocol numbbers and names for a variety of Internet services</td>
+</tr>
+<tr>
+<td>rpc</td>
+<td>Defines remote procedure call names and numbers</td>
+</tr>
+<tr>
+<td>services</td>
+<td>Defines TCP&#x2F;IP and UDP service names and their port assignments</td>
+</tr>
+<tr>
+<td>shadow</td>
+<td>Contains encrypted passwords for users who are defined in the passwd file.(This is viewed as a more secure way to store passwords than the original encrypted password in the passwd file. The passwd file needs to be publicly readable, whereas the shadow file can be unreadable by all but the root user.)</td>
+</tr>
+<tr>
+<td>shells</td>
+<td>Lists the shell command-line interpreters(bash, sh, csh and so on) that are available on the system as well as their locations</td>
+</tr>
+<tr>
+<td>sudoers</td>
+<td>Sets commands that can be run by users, who may not otherwise have permission to run the command, using the sudo command. In particular, this file is used to provide selected users with root permission</td>
+</tr>
+<tr>
+<td>rsyslog.conf</td>
+<td>Defines what logging messages are gathered by the rsyslogd daemon and in which files they are stored.(Typically, log messages are stored in files contained in the &#x2F;var&#x2F;log directory.)</td>
+</tr>
+<tr>
+<td>xinetd.conf</td>
+<td>Contains simple configuration information used by the xinetd daemon process. This file mostly points to the &#x2F;etc&#x2F;xinetd.d directory for information about individual services</td>
+</tr>
+</tbody></table>
 <h3 id="Using-Other-Administrative-Accounts"><a href="#Using-Other-Administrative-Accounts" class="headerlink" title="Using Other Administrative Accounts"></a>Using Other Administrative Accounts</h3><h3 id="Checking-and-Configuring-Hardware"><a href="#Checking-and-Configuring-Hardware" class="headerlink" title="Checking and Configuring Hardware"></a>Checking and Configuring Hardware</h3><ul>
 <li><p>Checking your hardware</p>
 </li>
