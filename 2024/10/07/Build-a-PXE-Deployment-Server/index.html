@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="I use Rocky Linux 9.4 to build a pxe deloyment server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build a PXE Deployment Server">
+<meta property="og:url" content="http://example.com/2024/10/07/Build-a-PXE-Deployment-Server/index.html">
+<meta property="og:site_name" content="To Be Better">
+<meta property="og:description" content="I use Rocky Linux 9.4 to build a pxe deloyment server">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-07T12:10:00.000Z">
+<meta property="article:modified_time" content="2024-10-08T04:22:46.919Z">
+<meta property="article:author" content="xianzhan-yang">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/10/07/Build-a-PXE-Deployment-Server/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/10/07/Build-a-PXE-Deployment-Server/","path":"2024/10/07/Build-a-PXE-Deployment-Server/","title":"Build a PXE Deployment Server"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Build a PXE Deployment Server | To Be Better</title>
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/love.js"></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">To Be Better</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Preparation"><span class="nav-number">1.</span> <span class="nav-text">Preparation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Installation"><span class="nav-number">2.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configuration"><span class="nav-number">3.</span> <span class="nav-text">Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Firewall"><span class="nav-number">3.1.</span> <span class="nav-text">Firewall</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Selinux"><span class="nav-number">3.2.</span> <span class="nav-text">Selinux</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mount-ISO"><span class="nav-number">3.3.</span> <span class="nav-text">Mount ISO</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DHCP-Server"><span class="nav-number">3.4.</span> <span class="nav-text">DHCP Server</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TFTP-Server"><span class="nav-number">3.5.</span> <span class="nav-text">TFTP Server</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP-Server"><span class="nav-number">3.6.</span> <span class="nav-text">HTTP Server</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xianzhan-yang"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xianzhan-yang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xianzhan-yang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xianzhan-yang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/07/Build-a-PXE-Deployment-Server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xianzhan-yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="To Be Better">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Build a PXE Deployment Server | To Be Better">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Build a PXE Deployment Server
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-10-07 20:10:00" itemprop="dateCreated datePublished" datetime="2024-10-07T20:10:00+08:00">2024-10-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-10-08 12:22:46" itemprop="dateModified" datetime="2024-10-08T12:22:46+08:00">2024-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/PXE/" itemprop="url" rel="index"><span itemprop="name">PXE</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>I use Rocky Linux 9.4 to build a pxe deloyment server</p>
+<span id="more"></span>
+
+<h4 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h4><p>ISO:  </p>
+<ul>
+<li>Rocky-9.4-x86_64-minimal</li>
+</ul>
+<p>Software:  </p>
+<ul>
+<li>VMware Workstation: I use the vitual enviroment to build pxe server</li>
+</ul>
+<p>Config File:  </p>
+<ul>
+<li>anaconda-ks.cfg: When you install a new linux system, this config file will be at your user’s directory.</li>
+</ul>
+<h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h4><p>Server: </p>
+<ul>
+<li>DHCP Server</li>
+<li>TFTP Server </li>
+<li>HTTP&#x2F;NFS&#x2F;FTP Server</li>
+</ul>
+<p>Software:</p>
+<ul>
+<li>syslinux</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install tftp-server tftp httpd dhcp-server syslinux</span><br></pre></td></tr></table></figure>
+
+<h4 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h4><h5 id="Firewall"><a href="#Firewall" class="headerlink" title="Firewall"></a>Firewall</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
+
+<h5 id="Selinux"><a href="#Selinux" class="headerlink" title="Selinux"></a>Selinux</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/selinux/config</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELINUX=disalbed</span><br></pre></td></tr></table></figure>
+
+<h5 id="Mount-ISO"><a href="#Mount-ISO" class="headerlink" title="Mount ISO"></a>Mount ISO</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sr0 /media</span><br></pre></td></tr></table></figure>
+
+<h5 id="DHCP-Server"><a href="#DHCP-Server" class="headerlink" title="DHCP Server"></a>DHCP Server</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.bak</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/doc/dhcp-server/dhcpd.conf.example /etc/dhcp/dhcpd.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/dhcp/dhcpd.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># dhcpd.conf</span><br><span class="line">#</span><br><span class="line"># Sample configuration file for ISC dhcpd</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">option domain-name &quot;pxe.server&quot;;</span><br><span class="line">option domain-name-servers 192.168.15.128;</span><br><span class="line"></span><br><span class="line">default-lease-time 600;</span><br><span class="line">max-lease-time 7200;</span><br><span class="line"></span><br><span class="line">log-facility local7;</span><br><span class="line"></span><br><span class="line">subnet 192.168.15.0 netmask 255.255.255.0 &#123;     </span><br><span class="line">  range 192.168.15.130 192.168.15.135; </span><br><span class="line">  next-server 192.168.15.128;</span><br><span class="line">  filename &quot;pxelinux.0&quot;; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable dhcpd --now</span><br></pre></td></tr></table></figure>
+
+<h5 id="TFTP-Server"><a href="#TFTP-Server" class="headerlink" title="TFTP Server"></a>TFTP Server</h5><ul>
+<li>Directory Structuration</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@pxe ~]# tree /var/lib/tftpboot/</span><br><span class="line">/var/lib/tftpboot/</span><br><span class="line">├── initrd.img</span><br><span class="line">├── ldlinux.c32</span><br><span class="line">├── libcom32.c32</span><br><span class="line">├── libutil.c32</span><br><span class="line">├── pxelinux.0</span><br><span class="line">├── pxelinux.cfg</span><br><span class="line">│   ├── boot.msg</span><br><span class="line">│   ├── default</span><br><span class="line">│   └── splash.png</span><br><span class="line">├── vesamenu.c32</span><br><span class="line">└── vmlinuz</span><br><span class="line"></span><br><span class="line">1 directory, 10 files</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable tftp --now</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/lib/tftpboot/pxelinux.cfg</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /media/isolinux/isolinux.cfg /var/lib/tftpboot/pxelinux.cfg/default</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /var/lib/tftpboot/pxelinux.cfg/default</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">default vesamenu.c32</span><br><span class="line">timeout 600</span><br><span class="line"></span><br><span class="line">display boot.msg</span><br><span class="line"></span><br><span class="line">menu background splash.png</span><br><span class="line">menu title Welcome to Rocky Linux 9.4!</span><br><span class="line"></span><br><span class="line">label linux</span><br><span class="line">  menu label ^Install Rocky Linux 9.4</span><br><span class="line">  menu default</span><br><span class="line">  kernel vmlinuz</span><br><span class="line">  append initrd=initrd.img inst.ks=http://192.168.15.128/ks.cfg </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /media/images/pxeboot/&#123;initrd.img,vmlinuz&#125; /var/lib/tftpboot</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /media/isolinux/&#123;vesamenu.c32,ldlinux.c32,libcom32.c32,libutil.c32&#125; /var/lib/tftpboot</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /media/isolinux/&#123;boot.msg,splash.png&#125; /var/lib/tftpboot/pxelinux.cfg</span><br></pre></td></tr></table></figure>
+
+<h5 id="HTTP-Server"><a href="#HTTP-Server" class="headerlink" title="HTTP Server"></a>HTTP Server</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable httpd --now</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/www/html/Rocky</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r /media/* /var/www/html/Rocky</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /root/anaconda-ks.cfg /var/www/html/ks.cfg </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod o+r /var/www/html/ks.cfg</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /var/www/html/ks.cfg</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"># Generated by Anaconda 34.25.4.9</span><br><span class="line"># Generated by pykickstart v3.32</span><br><span class="line">#version=RHEL9</span><br><span class="line"># Use graphical install</span><br><span class="line"></span><br><span class="line">url --url=http://192.168.15.128/Rocky</span><br><span class="line"></span><br><span class="line">graphical</span><br><span class="line">repo --name=&quot;minimal&quot; --baseurl=http://192.168.15.128/Rocky/minimal </span><br><span class="line"></span><br><span class="line">%addon com_redhat_kdump --enable --reserve-mb=&#x27;auto&#x27;</span><br><span class="line"></span><br><span class="line">%end</span><br><span class="line"></span><br><span class="line"># Keyboard layouts</span><br><span class="line">keyboard --xlayouts=&#x27;us&#x27;</span><br><span class="line"># System language</span><br><span class="line">lang en_US.UTF-8</span><br><span class="line"></span><br><span class="line"># Network information</span><br><span class="line">network  --bootproto=dhcp --device=ens160  --ipv6=auto --activate</span><br><span class="line">network  --hostname=test</span><br><span class="line"></span><br><span class="line"># Use CDROM installation media</span><br><span class="line">cdrom</span><br><span class="line"></span><br><span class="line">%packages</span><br><span class="line">@^minimal-environment</span><br><span class="line"></span><br><span class="line">%end</span><br><span class="line"></span><br><span class="line"># Run the Setup Agent on first boot</span><br><span class="line">firstboot --enable</span><br><span class="line"></span><br><span class="line"># Generated using Blivet version 3.6.0</span><br><span class="line">ignoredisk --only-use=nvme0n1</span><br><span class="line"># Partition clearing information</span><br><span class="line">clearpart --none --initlabel</span><br><span class="line"># Disk partitioning information</span><br><span class="line">part /boot --fstype=&quot;xfs&quot; --ondisk=nvme0n1 --size=1024</span><br><span class="line">part pv.50 --fstype=&quot;lvmpv&quot; --ondisk=nvme0n1 --size=19455</span><br><span class="line">volgroup rl --pesize=4096 pv.50</span><br><span class="line">logvol / --fstype=&quot;xfs&quot; --grow --maxsize=71680 --size=1024 --name=root --vgname=rl</span><br><span class="line">logvol swap --fstype=&quot;swap&quot; --size=2047 --name=swap --vgname=rl</span><br><span class="line"></span><br><span class="line"># System timezone</span><br><span class="line">timezone Asia/Kuala_Lumpur --utc</span><br><span class="line"></span><br><span class="line"># Root password</span><br><span class="line">rootpw --iscrypted $6$GyEHJnTWr9WNqjvZ$CUXYbn952smM.xYu35fihI.5ixujecmJBHVdtZ3ELihd4Nw2PFOpbe38zLqoWjm7FEyB/foA4RICRcWAngiBF1</span><br><span class="line"></span><br><span class="line"># Reboot system</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">2024</span>
+  </div><div>
+<span id="timeDate">Date...</span>
+<span id="times">Times...</span>
+<script>
+    function createtime() {
+        const startTime = '10/05/2024 21:36:55',
+            start = new Date(startTime)
+        let mill = new Date() - start,
+            seconds = Math.floor(mill / 1000),
+            mins = Math.floor(seconds / 60),
+            hours = Math.floor(mins / 60),
+            days = Math.floor(hours / 24)
+        const time = {
+            seconds: seconds - mins * 60,
+            mins: mins - hours * 60,
+            hours: hours - days * 24,
+        }
+        for (const k in time) {
+            time[k] = `${time[k]}`.padStart(2, '0')
+        }
+        document.getElementById("timeDate").innerHTML = ` ${days} 天`
+        document.getElementById("times").innerHTML = ` ${time.hours} Hours ${time.mins} Minutes ${time.seconds} Seconds`
+    }
+    setInterval(createtime, 500)
+</script>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
