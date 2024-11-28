@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"xianzhan-yang.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Question: You are tasked with managing a web server running on a Linux system. The server log files are stored in &#x2F;var&#x2F;log&#x2F;apache2&#x2F;. The logs are consuming too much disk space. You">
+  <meta name="description" content="Question: You are managing system performance on a Linux server. Your task is to:  Monitor real-time system resource usage (CPU, memory, disk I&#x2F;O) for one minute and save the output to a file nam">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux Practice - Day 1">
-<meta property="og:url" content="https://xianzhan-yang.github.io/2024/11/26/37/index.html">
+<meta property="og:title" content="Linux Practice - Day 3">
+<meta property="og:url" content="https://xianzhan-yang.github.io/2024/11/28/43/index.html">
 <meta property="og:site_name" content="Arch">
-<meta property="og:description" content="Question: You are tasked with managing a web server running on a Linux system. The server log files are stored in &#x2F;var&#x2F;log&#x2F;apache2&#x2F;. The logs are consuming too much disk space. You">
+<meta property="og:description" content="Question: You are managing system performance on a Linux server. Your task is to:  Monitor real-time system resource usage (CPU, memory, disk I&#x2F;O) for one minute and save the output to a file nam">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-26T12:57:37.000Z">
-<meta property="article:modified_time" content="2024-11-27T04:06:00.548Z">
+<meta property="article:published_time" content="2024-11-28T08:39:43.000Z">
+<meta property="article:modified_time" content="2024-11-28T08:52:35.279Z">
 <meta property="article:author" content="xianzhan-yang">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://xianzhan-yang.github.io/2024/11/26/37/">
+<link rel="canonical" href="https://xianzhan-yang.github.io/2024/11/28/43/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
 </script>
 <script type="text/javascript" src="/js/love.js"></script>
 
-  <title>Linux Practice - Day 1 | Arch</title>
+  <title>Linux Practice - Day 3 | Arch</title>
   
 
 
@@ -156,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://xianzhan-yang.github.io/2024/11/26/37/">
+    <link itemprop="mainEntityOfPage" href="https://xianzhan-yang.github.io/2024/11/28/43/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -169,7 +169,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Linux Practice - Day 1
+          Linux Practice - Day 3
         </h1>
 
         <div class="post-meta">
@@ -178,16 +178,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2024-11-26 20:57:37" itemprop="dateCreated datePublished" datetime="2024-11-26T20:57:37+08:00">2024-11-26</time>
+              <time title="Created: 2024-11-28 16:39:43 / Modified: 16:52:35" itemprop="dateCreated datePublished" datetime="2024-11-28T16:39:43+08:00">2024-11-28</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-11-27 12:06:00" itemprop="dateModified" datetime="2024-11-27T12:06:00+08:00">2024-11-27</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -210,52 +204,80 @@
 
       
         <p><strong>Question:</strong></p>
-<p>You are tasked with managing a web server running on a Linux system. The server log files are stored in &#x2F;var&#x2F;log&#x2F;apache2&#x2F;. The logs are consuming too much disk space. Your task is to:</p>
+<p>You are managing system performance on a Linux server. Your task is to:</p>
 <ol>
-<li><strong>Find the five largest log files in the directory</strong> and display their sizes in human-readable format.</li>
-<li><strong>Archive the log files older than 30 days</strong> into a compressed file named old_logs.tar.gz in your home directory.</li>
-<li><strong>Set up a cron job</strong> to delete log files older than 30 days automatically every week.</li>
+<li><strong>Monitor real-time system resource usage</strong> (CPU, memory, disk I&#x2F;O) for one minute and save the output to a file named system_stats.log in your home directory.</li>
+<li><strong>Find the top 5 processes</strong> consuming the most memory and CPU and list them in the same log file.</li>
+<li><strong>Create a script</strong> named resource_monitor.sh that performs the above tasks and appends the results to system_stats.log each time it is run.</li>
+<li><strong>Set up a cron job</strong> to execute this script every 15 minutes.</li>
 </ol>
 <p><strong>Hints:</strong></p>
 <ul>
-<li>Use du, ls, or find for file size and date filtering.</li>
-<li>Use tar for archiving.</li>
-<li>Use crontab to set up the cron job.</li>
+<li>Use tools like top, htop, vmstat, iostat, or sar for monitoring.</li>
+<li>Use ps, sort, and head to find processes consuming the most resources.</li>
+<li>Use crontab to schedule the script.</li>
 </ul>
 <span id="more"></span>
 
 <p><strong>Answer:</strong></p>
-<p><strong>Step 1: Find the five largest log files in the directory and display their sizes in human-readable format.</strong></p>
-<p>Use the du command to check the sizes of files and the sort command to display the largest ones:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -ah /var/log/apache2/ | sort -rh | head -n 5</span><br></pre></td></tr></table></figure>
-<p>Explanation:</p>
-<ul>
-<li>du -ah &#x2F;var&#x2F;log&#x2F;apache2&#x2F; lists the sizes of all files and directories under &#x2F;var&#x2F;log&#x2F;apache2&#x2F;.</li>
-<li>sort -rh sorts the output by human-readable size in reverse order (largest first).</li>
-<li>head -n 5 displays only the top 5 results.</li>
-</ul>
-<p><strong>Step 2: Archive the log files older than 30 days into a compressed file named old_logs.tar.gz in your home directory.</strong></p>
-<p>Use the find command to identify files older than 30 days and then pipe the results into tar to create the archive.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var/log/apache2/ -type f -mtime +30 -exec tar -czf ~/old_logs.tar.gz &#123;&#125; +</span><br></pre></td></tr></table></figure>
+<p><strong>Step 1: Monitor real-time system resource usage and save the output to system_stats.log</strong></p>
+<p>You can use vmstat or top for this task. Since top is interactive by default, we’ll use top in batch mode to get system statistics.</p>
+<p>Run top in batch mode to collect data for one minute and save the output to system_stats.log:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -b -n 60 -d 1 &gt;&gt; ~/system_stats.log</span><br></pre></td></tr></table></figure>
 
 <p>Explanation:</p>
 <ul>
-<li>find &#x2F;var&#x2F;log&#x2F;apache2&#x2F; -type f -mtime +30 finds all files (-type f) under &#x2F;var&#x2F;log&#x2F;apache2&#x2F; that are older than 30 days (-mtime +30).</li>
-<li>-exec tar -czf <del>&#x2F;old_logs.tar.gz {} + uses tar to compress these files into a tar.gz archive named old_logs.tar.gz in your home directory (</del>&#x2F;).</li>
+<li>-b: Batch mode (non-interactive).</li>
+<li>-n 60: Run for 60 iterations (1 minute, if the delay between iterations is 1 second).</li>
+<li>-d 1: Delay of 1 second between each iteration.</li>
+<li>&gt;&gt; ~&#x2F;system_stats.log: Append the output to system_stats.log in your home directory.</li>
 </ul>
-<p><strong>Step 3: Set up a cron job to delete log files older than 30 days automatically every week.</strong></p>
-<p>To set up the cron job, first open the crontab file:</p>
+<p><strong>Step 2: Find the top 5 processes consuming the most memory and CPU and list them in the same log file</strong></p>
+<p>You can use the ps command to find processes sorted by memory and CPU usage.</p>
+<p>For the top 5 processes by CPU usage:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux --sort=-%cpu | head -n 6 &gt;&gt; ~/system_stats.log</span><br></pre></td></tr></table></figure>
+
+<p>For the top 5 processes by memory usage:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux --sort=-%mem | head -n 6 &gt;&gt; ~/system_stats.log</span><br></pre></td></tr></table></figure>
+
+<p>Explanation:</p>
+<ul>
+<li>ps aux: Lists all processes with detailed information.</li>
+<li>–sort&#x3D;-%cpu: Sort by CPU usage (descending).</li>
+<li>–sort&#x3D;-%mem: Sort by memory usage (descending).</li>
+<li>head -n 6: The first line is the header, so head -n 6 grabs the top 5 processes plus the header.</li>
+<li>&gt;&gt; ~&#x2F;system_stats.log: Appends the output to system_stats.log.</li>
+</ul>
+<p><strong>Step 3: Create a script named resource_monitor.sh</strong></p>
+<p>Create a new script called resource_monitor.sh:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/resource_monitor.sh</span><br></pre></td></tr></table></figure>
+
+<p>Inside the script, add the following content:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># Log system stats</span><br><span class="line">top -b -n 60 -d 1 &gt;&gt; ~/system_stats.log</span><br><span class="line"></span><br><span class="line"># Log top 5 processes by CPU</span><br><span class="line">echo &quot;Top 5 processes by CPU:&quot; &gt;&gt; ~/system_stats.log</span><br><span class="line">ps aux --sort=-%cpu | head -n 6 &gt;&gt; ~/system_stats.log</span><br><span class="line"></span><br><span class="line"># Log top 5 processes by memory</span><br><span class="line">echo &quot;Top 5 processes by memory:&quot; &gt;&gt; ~/system_stats.log</span><br><span class="line">ps aux --sort=-%mem | head -n 6 &gt;&gt; ~/system_stats.log</span><br><span class="line"></span><br><span class="line"># Add a timestamp for each run</span><br><span class="line">echo &quot;Timestamp: $(date)&quot; &gt;&gt; ~/system_stats.log</span><br><span class="line">echo &quot;-------------------------&quot; &gt;&gt; ~/system_stats.log</span><br></pre></td></tr></table></figure>
+
+<p>Explanation:</p>
+<ul>
+<li>The script logs system stats (top 1-minute data) and the top 5 processes for CPU and memory.</li>
+<li>It adds a timestamp (date) for each execution and separates logs with a line (————————-).</li>
+</ul>
+<p>Save and close the script (Ctrl+O, Enter, Ctrl+X).</p>
+<p>Make the script executable:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/resource_monitor.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>Step 4: Set up a cron job to execute this script every 15 minutes</strong></p>
+<p>Edit the crontab to schedule the script:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
 
-<p>Then add the following line to schedule the task to run weekly (every Sunday at midnight):</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 * * 0 find /var/log/apache2/ -type f -mtime +30 -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>Add the following line to run the script every 15 minutes:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/15 * * * * /bin/bash /home/yourusername/resource_monitor.sh</span><br></pre></td></tr></table></figure>
 
 <p>Explanation:</p>
 <ul>
-<li>0 0 * * 0 means “run at midnight (00:00) every Sunday.”</li>
-<li>find &#x2F;var&#x2F;log&#x2F;apache2&#x2F; -type f -mtime +30 -exec rm {} ; deletes files older than 30 days.</li>
+<li>*&#x2F;15 * * * *: Runs the script every 15 minutes.</li>
+<li>Replace &#x2F;home&#x2F;yourusername&#x2F;resource_monitor.sh with the correct path to your script.</li>
+<li>Ensure that the script is executable and has the correct path.</li>
 </ul>
-<p>After saving and closing the crontab, the cron job will run weekly and delete the old log files.</p>
+<p>Save and exit the crontab (Ctrl+X, Y, Enter).</p>
 
     </div>
 
@@ -270,11 +292,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2024/11/27/51/" rel="next" title="Linux Practice - Day 2">
-      Linux Practice - Day 2 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/11/27/51/" rel="prev" title="Linux Practice - Day 2">
+      <i class="fa fa-chevron-left"></i> Linux Practice - Day 2
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
