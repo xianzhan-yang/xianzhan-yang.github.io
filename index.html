@@ -151,6 +151,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xianzhan-yang.github.io/2024/11/30/40/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xianzhan-yang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Arch">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/11/30/40/" class="post-title-link" itemprop="url">Linux Practice - Day 5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-11-30 19:00:40 / Modified: 19:16:52" itemprop="dateCreated datePublished" datetime="2024-11-30T19:00:40+08:00">2024-11-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Question:</p>
+<p>You are tasked with maintaining a Linux server and performing regular system administration tasks. Your goal is to:</p>
+<ol>
+<li><p>List all users on the system who have not logged in for the past 30 days and save the list to &#x2F;home&#x2F;yourusername&#x2F;inactive_users.txt.</p>
+</li>
+<li><p>Check the disk space of the &#x2F;home directory, and if the disk usage exceeds 90%, send a warning email to <a href="mailto:&#x61;&#x64;&#109;&#x69;&#x6e;&#64;&#x79;&#111;&#x75;&#x72;&#x64;&#x6f;&#x6d;&#97;&#x69;&#110;&#x2e;&#x63;&#111;&#x6d;">&#x61;&#x64;&#109;&#x69;&#x6e;&#64;&#x79;&#111;&#x75;&#x72;&#x64;&#x6f;&#x6d;&#97;&#x69;&#110;&#x2e;&#x63;&#111;&#x6d;</a>.</p>
+</li>
+<li><p>Set up log rotation for the &#x2F;var&#x2F;log&#x2F;myapp.log file:</p>
+<ul>
+<li>Rotate the log file every week.</li>
+<li>Keep 4 weeks’ worth of logs and delete older logs.</li>
+<li>Ensure that the log file is compressed after rotation.</li>
+</ul>
+</li>
+<li><p>Create a script that:</p>
+<ul>
+<li>Checks the available disk space of the &#x2F;home directory.</li>
+<li>Runs the disk space check every hour, and sends a notification email if the usage exceeds 90%.</li>
+</ul>
+</li>
+</ol>
+<p>Hints:</p>
+<ul>
+<li>Use last or lastlog to check user logins.</li>
+<li>Use df to check disk space usage.</li>
+<li>Use mail or sendmail to send email notifications.</li>
+<li>Use logrotate for managing log rotation.</li>
+<li>Use cron to schedule tasks.</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/30/40/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://xianzhan-yang.github.io/2024/11/29/25/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -176,7 +279,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-11-29 17:24:25 / Modified: 17:34:36" itemprop="dateCreated datePublished" datetime="2024-11-29T17:24:25+08:00">2024-11-29</time>
+              <time title="Created: 2024-11-29 17:24:25 / Modified: 17:35:37" itemprop="dateCreated datePublished" datetime="2024-11-29T17:24:25+08:00">2024-11-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,50 +317,14 @@
 <li>Use tar to create a compressed archive.</li>
 <li>Use crontab to schedule tasks.</li>
 </ul>
-<p><strong>Answer:</strong></p>
-<p><strong>Step 1: Identify disk usage of all mounted filesystems</strong></p>
-<p>Use the df command to check disk usage and save the output to &#x2F;home&#x2F;yourusername&#x2F;disk_usage_report.txt:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h &gt; ~/disk_usage_report.txt</span><br></pre></td></tr></table></figure>
-
-<p>Explanation:</p>
-<ul>
-<li>df -h: Displays disk usage for all mounted filesystems in a human-readable format.</li>
-<li>&gt;: Redirects the output to a file (disk_usage_report.txt) in your home directory.</li>
-</ul>
-<p><strong>Step 2: Find all files larger than 100MB in &#x2F;var and save the list</strong></p>
-<p>Use the find command to locate files larger than 100MB and save their paths and sizes to &#x2F;home&#x2F;yourusername&#x2F;large_files.txt:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var -type f -size +100M -exec du -h &#123;&#125; + | sort -rh &gt; ~/large_files.txt</span><br></pre></td></tr></table></figure>
-
-<p>Explanation:</p>
-<ul>
-<li>find &#x2F;var -type f: Searches for regular files in &#x2F;var.</li>
-<li>-size +100M: Finds files larger than 100MB.</li>
-<li>-exec du -h {} +: Executes du to show the file sizes in human-readable format.</li>
-<li>sort -rh: Sorts the output by size in descending order.</li>
-<li>&gt;: Saves the output to large_files.txt.</li>
-</ul>
-<p><strong>Step 3: Create a compressed backup of the &#x2F;etc directory</strong></p>
-<p>Create the directory &#x2F;home&#x2F;yourusername&#x2F;backups&#x2F; (if it doesn’t exist):</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/backups</span><br></pre></td></tr></table></figure>
-
-<p>Create a compressed backup of the &#x2F;etc directory, including hidden files, and save it as etc_backup.tar.gz:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -czpf ~/backups/etc_backup.tar.gz /etc</span><br></pre></td></tr></table></figure>
-
-<p>Explanation:</p>
-<ul>
-<li>tar -czpf: Creates a compressed archive (-c), compresses it with gzip (-z), preserves permissions (-p), and specifies the file (-f).</li>
-<li>~&#x2F;backups&#x2F;etc_backup.tar.gz: The path to save the backup file.</li>
-<li>&#x2F;etc: The directory to back up.</li>
-</ul>
-<p><strong>Step 4: Set up a cron job to run the backup daily at 3:00 AM</strong></p>
-<p>Edit the crontab:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
-
-<p>Add the following line to schedule the backup:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 3 * * * tar -czpf /home/yourusername/backups/etc_backup.tar.gz /etc</span><br></pre></td></tr></table></figure>
-
-<p>Save and exit the crontab.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/29/25/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -615,7 +682,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

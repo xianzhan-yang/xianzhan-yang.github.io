@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"xianzhan-yang.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Question: You are tasked with managing a web server running on a Linux system. The server log files are stored in &#x2F;var&#x2F;log&#x2F;apache2&#x2F;. The logs are consuming too much disk space. You">
+  <meta name="description" content="Question: You are tasked with maintaining a Linux server and performing regular system administration tasks. Your goal is to:  List all users on the system who have not logged in for the past 30 days">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux Practice - Day 1">
-<meta property="og:url" content="https://xianzhan-yang.github.io/2024/11/26/37/index.html">
+<meta property="og:title" content="Linux Practice - Day 5">
+<meta property="og:url" content="https://xianzhan-yang.github.io/2024/11/30/40/index.html">
 <meta property="og:site_name" content="Arch">
-<meta property="og:description" content="Question: You are tasked with managing a web server running on a Linux system. The server log files are stored in &#x2F;var&#x2F;log&#x2F;apache2&#x2F;. The logs are consuming too much disk space. You">
+<meta property="og:description" content="Question: You are tasked with maintaining a Linux server and performing regular system administration tasks. Your goal is to:  List all users on the system who have not logged in for the past 30 days">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-26T12:57:37.000Z">
-<meta property="article:modified_time" content="2024-11-27T04:06:00.548Z">
+<meta property="article:published_time" content="2024-11-30T11:00:40.000Z">
+<meta property="article:modified_time" content="2024-11-30T11:16:52.653Z">
 <meta property="article:author" content="xianzhan-yang">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://xianzhan-yang.github.io/2024/11/26/37/">
+<link rel="canonical" href="https://xianzhan-yang.github.io/2024/11/30/40/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
 </script>
 <script type="text/javascript" src="/js/love.js"></script>
 
-  <title>Linux Practice - Day 1 | Arch</title>
+  <title>Linux Practice - Day 5 | Arch</title>
   
 
 
@@ -156,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://xianzhan-yang.github.io/2024/11/26/37/">
+    <link itemprop="mainEntityOfPage" href="https://xianzhan-yang.github.io/2024/11/30/40/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -169,7 +169,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Linux Practice - Day 1
+          Linux Practice - Day 5
         </h1>
 
         <div class="post-meta">
@@ -178,16 +178,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2024-11-26 20:57:37" itemprop="dateCreated datePublished" datetime="2024-11-26T20:57:37+08:00">2024-11-26</time>
+              <time title="Created: 2024-11-30 19:00:40 / Modified: 19:16:52" itemprop="dateCreated datePublished" datetime="2024-11-30T19:00:40+08:00">2024-11-30</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-11-27 12:06:00" itemprop="dateModified" datetime="2024-11-27T12:06:00+08:00">2024-11-27</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -209,53 +203,107 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>Question:</strong></p>
-<p>You are tasked with managing a web server running on a Linux system. The server log files are stored in &#x2F;var&#x2F;log&#x2F;apache2&#x2F;. The logs are consuming too much disk space. Your task is to:</p>
+        <p>Question:</p>
+<p>You are tasked with maintaining a Linux server and performing regular system administration tasks. Your goal is to:</p>
 <ol>
-<li><strong>Find the five largest log files in the directory</strong> and display their sizes in human-readable format.</li>
-<li><strong>Archive the log files older than 30 days</strong> into a compressed file named old_logs.tar.gz in your home directory.</li>
-<li><strong>Set up a cron job</strong> to delete log files older than 30 days automatically every week.</li>
-</ol>
-<p><strong>Hints:</strong></p>
+<li><p>List all users on the system who have not logged in for the past 30 days and save the list to &#x2F;home&#x2F;yourusername&#x2F;inactive_users.txt.</p>
+</li>
+<li><p>Check the disk space of the &#x2F;home directory, and if the disk usage exceeds 90%, send a warning email to <a href="mailto:&#x61;&#x64;&#109;&#x69;&#x6e;&#64;&#x79;&#111;&#x75;&#x72;&#x64;&#x6f;&#x6d;&#97;&#x69;&#110;&#x2e;&#x63;&#111;&#x6d;">&#x61;&#x64;&#109;&#x69;&#x6e;&#64;&#x79;&#111;&#x75;&#x72;&#x64;&#x6f;&#x6d;&#97;&#x69;&#110;&#x2e;&#x63;&#111;&#x6d;</a>.</p>
+</li>
+<li><p>Set up log rotation for the &#x2F;var&#x2F;log&#x2F;myapp.log file:</p>
 <ul>
-<li>Use du, ls, or find for file size and date filtering.</li>
-<li>Use tar for archiving.</li>
-<li>Use crontab to set up the cron job.</li>
+<li>Rotate the log file every week.</li>
+<li>Keep 4 weeks’ worth of logs and delete older logs.</li>
+<li>Ensure that the log file is compressed after rotation.</li>
+</ul>
+</li>
+<li><p>Create a script that:</p>
+<ul>
+<li>Checks the available disk space of the &#x2F;home directory.</li>
+<li>Runs the disk space check every hour, and sends a notification email if the usage exceeds 90%.</li>
+</ul>
+</li>
+</ol>
+<p>Hints:</p>
+<ul>
+<li>Use last or lastlog to check user logins.</li>
+<li>Use df to check disk space usage.</li>
+<li>Use mail or sendmail to send email notifications.</li>
+<li>Use logrotate for managing log rotation.</li>
+<li>Use cron to schedule tasks.</li>
 </ul>
 <span id="more"></span>
 
 <p><strong>Answer:</strong></p>
-<p><strong>Step 1: Find the five largest log files in the directory and display their sizes in human-readable format.</strong></p>
-<p>Use the du command to check the sizes of files and the sort command to display the largest ones:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -ah /var/log/apache2/ | sort -rh | head -n 5</span><br></pre></td></tr></table></figure>
-<p>Explanation:</p>
-<ul>
-<li>du -ah &#x2F;var&#x2F;log&#x2F;apache2&#x2F; lists the sizes of all files and directories under &#x2F;var&#x2F;log&#x2F;apache2&#x2F;.</li>
-<li>sort -rh sorts the output by human-readable size in reverse order (largest first).</li>
-<li>head -n 5 displays only the top 5 results.</li>
-</ul>
-<p><strong>Step 2: Archive the log files older than 30 days into a compressed file named old_logs.tar.gz in your home directory.</strong></p>
-<p>Use the find command to identify files older than 30 days and then pipe the results into tar to create the archive.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var/log/apache2/ -type f -mtime +30 -exec tar -czf ~/old_logs.tar.gz &#123;&#125; +</span><br></pre></td></tr></table></figure>
+<p><strong>Step 1: List all users who have not logged in for the past 30 days</strong></p>
+<p>Use the lastlog command to find users who have not logged in within the last 30 days. To filter out users with recent logins and save the output to inactive_users.txt, you can run:</p>
+<p><strong>Note</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I have no user who unlogins over 10 or 20 days, so the anwer of $5 in my system shows nothing. </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lastlog | awk &#x27;$4 == &quot;Never&quot; || $5 &lt; 30 &#123;print $1, $4, $5&#125;&#x27; &gt; ~/inactive_users.txt</span><br></pre></td></tr></table></figure>
 
 <p>Explanation:</p>
 <ul>
-<li>find &#x2F;var&#x2F;log&#x2F;apache2&#x2F; -type f -mtime +30 finds all files (-type f) under &#x2F;var&#x2F;log&#x2F;apache2&#x2F; that are older than 30 days (-mtime +30).</li>
-<li>-exec tar -czf <del>&#x2F;old_logs.tar.gz {} + uses tar to compress these files into a tar.gz archive named old_logs.tar.gz in your home directory (</del>&#x2F;).</li>
+<li>lastlog: Shows the last login of each user.</li>
+<li>awk ‘$4 &#x3D;&#x3D; “Never” || $5 &lt; 30 {print $1, $4, $5}’: Filters users who either have “Never” logged in or haven’t logged in for the past 30 days. This assumes that the login time is shown in the 5th column.</li>
+<li>&gt; ~&#x2F;inactive_users.txt: Saves the output to inactive_users.txt.</li>
 </ul>
-<p><strong>Step 3: Set up a cron job to delete log files older than 30 days automatically every week.</strong></p>
-<p>To set up the cron job, first open the crontab file:</p>
+<p><strong>Step 2: Check the disk space of the &#x2F;home directory and send a warning email if usage exceeds 90%</strong></p>
+<p>Use the df command to check disk usage for the &#x2F;home directory and mail (or sendmail) to send an email if the disk usage exceeds 90%. The command to check disk space and send an email could look like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h /home | awk &#x27;NR==2 &#123;if ($5+0 &gt; 90) print &quot;Warning: Disk space on /home exceeds 90%. Current usage: &quot;$5;&#125;&#x27; | mail -s &quot;Disk Space Warning&quot; admin@yourdomain.com</span><br></pre></td></tr></table></figure>
+
+<p>Explanation:</p>
+<ul>
+<li>df -h &#x2F;home: Displays disk space for the &#x2F;home directory in human-readable format.</li>
+<li>awk ‘NR&#x3D;&#x3D;2 {if ($5+0 &gt; 90) print “Warning: Disk space on &#x2F;home exceeds 90%. Current usage: “$5;}’: Processes the output to check if the disk usage exceeds 90%. The NR&#x3D;&#x3D;2 ensures we are checking the second line (actual usage line).</li>
+<li>mail -s “Disk Space Warning” <a href="mailto:&#x61;&#x64;&#x6d;&#x69;&#x6e;&#x40;&#x79;&#111;&#x75;&#x72;&#100;&#111;&#109;&#x61;&#x69;&#x6e;&#46;&#99;&#111;&#109;">&#x61;&#x64;&#x6d;&#x69;&#x6e;&#x40;&#x79;&#111;&#x75;&#x72;&#100;&#111;&#109;&#x61;&#x69;&#x6e;&#46;&#99;&#111;&#109;</a>: Sends an email with the subject “Disk Space Warning”.</li>
+</ul>
+<p><strong>Step 3: Set up log rotation for &#x2F;var&#x2F;log&#x2F;myapp.log</strong></p>
+<p>To set up log rotation for myapp.log, create or modify the logrotate configuration file for this log file. Here’s an example of a configuration that rotates the log every week, keeps 4 weeks of logs, and compresses old logs:</p>
+<p>Create the logrotate configuration file (if not already present):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/logrotate.d/myapp</span><br></pre></td></tr></table></figure>
+
+<p>Add the following content:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/var/log/myapp.log &#123;</span><br><span class="line">    weekly                   # Rotate logs every week</span><br><span class="line">    rotate 4                 # Keep 4 weeks of logs</span><br><span class="line">    compress                 # Compress old logs</span><br><span class="line">    missingok                # Don&#x27;t show an error if the log file is missing</span><br><span class="line">    notifempty               # Don&#x27;t rotate the log if it&#x27;s empty</span><br><span class="line">    create 0644 root root    # Set permissions for new log files</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Explanation:</p>
+<ul>
+<li>weekly: Rotates the log every week.</li>
+<li>rotate 4: Keeps 4 weeks of old logs and deletes anything older.</li>
+<li>compress: Compresses old log files (e.g., myapp.log.1.gz).</li>
+<li>create 0644 root root: Creates a new log file with specified permissions after rotation.</li>
+</ul>
+<p><strong>Step 4: Create a script to check disk space and send a notification email if usage exceeds 90%</strong></p>
+<p>First, create the script:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/check_disk_space.sh</span><br></pre></td></tr></table></figure>
+
+<p>Add the following content:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># Check disk space on /home</span><br><span class="line">disk_usage=$(df -h /home | awk &#x27;NR==2 &#123;print $5&#125;&#x27; | sed &#x27;s/%//&#x27;)</span><br><span class="line"></span><br><span class="line"># If disk usage is greater than 90%, send an email</span><br><span class="line">if [ &quot;$disk_usage&quot; -gt 90 ]; then</span><br><span class="line">    echo &quot;Warning: Disk space on /home exceeds 90%. Current usage: $disk_usage%&quot; | mail -s &quot;Disk Space Warning&quot; admin@yourdomain.com</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>Explanation:</p>
+<ul>
+<li>df -h &#x2F;home: Gets disk usage for &#x2F;home.</li>
+<li>awk ‘NR&#x3D;&#x3D;2 {print $5}’: Extracts the percentage usage from the df output.</li>
+<li>sed ‘s&#x2F;%&#x2F;&#x2F;‘: Removes the percent sign.</li>
+<li>if [ “$disk_usage” -gt 90 ]; then: Checks if the disk usage exceeds 90%.</li>
+<li>mail -s “Disk Space Warning” <a href="mailto:&#97;&#100;&#109;&#105;&#x6e;&#64;&#121;&#111;&#x75;&#114;&#x64;&#x6f;&#109;&#97;&#105;&#x6e;&#x2e;&#99;&#111;&#x6d;">&#97;&#100;&#109;&#105;&#x6e;&#64;&#121;&#111;&#x75;&#114;&#x64;&#x6f;&#109;&#97;&#105;&#x6e;&#x2e;&#99;&#111;&#x6d;</a>: Sends an email if usage exceeds 90%.</li>
+</ul>
+<p>Make the script executable:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/check_disk_space.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>Step 5: Set up a cron job to run the disk space check every hour</strong></p>
+<p>To run the script every hour, add it to the crontab:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
 
-<p>Then add the following line to schedule the task to run weekly (every Sunday at midnight):</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 * * 0 find /var/log/apache2/ -type f -mtime +30 -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>Add the following line to execute the script every hour:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 * * * * /home/yourusername/check_disk_space.sh</span><br></pre></td></tr></table></figure>
 
 <p>Explanation:</p>
 <ul>
-<li>0 0 * * 0 means “run at midnight (00:00) every Sunday.”</li>
-<li>find &#x2F;var&#x2F;log&#x2F;apache2&#x2F; -type f -mtime +30 -exec rm {} ; deletes files older than 30 days.</li>
+<li>0 * * * *: Runs the script at the start of every hour.</li>
+<li>&#x2F;home&#x2F;yourusername&#x2F;check_disk_space.sh: The path to the script.</li>
 </ul>
-<p>After saving and closing the crontab, the cron job will run weekly and delete the old log files.</p>
+<p>Save and exit the crontab editor.</p>
 
     </div>
 
@@ -270,11 +318,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2024/11/27/51/" rel="next" title="Linux Practice - Day 2">
-      Linux Practice - Day 2 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/11/29/25/" rel="prev" title="Linux Practice - Day 4">
+      <i class="fa fa-chevron-left"></i> Linux Practice - Day 4
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
