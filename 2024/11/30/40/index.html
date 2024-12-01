@@ -208,7 +208,7 @@
 <ol>
 <li><p>List all users on the system who have not logged in for the past 30 days and save the list to &#x2F;home&#x2F;yourusername&#x2F;inactive_users.txt.</p>
 </li>
-<li><p>Check the disk space of the &#x2F;home directory, and if the disk usage exceeds 90%, send a warning email to <a href="mailto:&#x61;&#x64;&#109;&#x69;&#x6e;&#64;&#x79;&#x6f;&#117;&#x72;&#100;&#x6f;&#x6d;&#x61;&#105;&#110;&#x2e;&#x63;&#111;&#109;">&#x61;&#x64;&#109;&#x69;&#x6e;&#64;&#x79;&#x6f;&#117;&#x72;&#100;&#x6f;&#x6d;&#x61;&#105;&#110;&#x2e;&#x63;&#111;&#109;</a>.</p>
+<li><p>Check the disk space of the &#x2F;home directory, and if the disk usage exceeds 90%, send a warning email to <a href="mailto:&#97;&#100;&#x6d;&#x69;&#110;&#x40;&#121;&#x6f;&#117;&#114;&#x64;&#111;&#109;&#97;&#105;&#x6e;&#46;&#x63;&#111;&#109;">&#97;&#100;&#x6d;&#x69;&#110;&#x40;&#121;&#x6f;&#117;&#114;&#x64;&#111;&#109;&#97;&#105;&#x6e;&#46;&#x63;&#111;&#109;</a>.</p>
 </li>
 <li><p>Set up log rotation for the &#x2F;var&#x2F;log&#x2F;myapp.log file:</p>
 <ul>
@@ -255,7 +255,7 @@
 <ul>
 <li>df -h &#x2F;home: Displays disk space for the &#x2F;home directory in human-readable format.</li>
 <li>awk ‘NR&#x3D;&#x3D;2 {if ($5+0 &gt; 90) print “Warning: Disk space on &#x2F;home exceeds 90%. Current usage: “$5;}’: Processes the output to check if the disk usage exceeds 90%. The NR&#x3D;&#x3D;2 ensures we are checking the second line (actual usage line).</li>
-<li>mail -s “Disk Space Warning” <a href="mailto:&#97;&#100;&#109;&#x69;&#110;&#x40;&#x79;&#111;&#117;&#114;&#100;&#111;&#x6d;&#x61;&#105;&#x6e;&#46;&#x63;&#111;&#x6d;">&#97;&#100;&#109;&#x69;&#110;&#x40;&#x79;&#111;&#117;&#114;&#100;&#111;&#x6d;&#x61;&#105;&#x6e;&#46;&#x63;&#111;&#x6d;</a>: Sends an email with the subject “Disk Space Warning”.</li>
+<li>mail -s “Disk Space Warning” <a href="mailto:&#x61;&#x64;&#x6d;&#x69;&#110;&#64;&#121;&#x6f;&#117;&#x72;&#100;&#111;&#x6d;&#97;&#x69;&#x6e;&#46;&#x63;&#x6f;&#109;">&#x61;&#x64;&#x6d;&#x69;&#110;&#64;&#121;&#x6f;&#117;&#x72;&#100;&#111;&#x6d;&#97;&#x69;&#x6e;&#46;&#x63;&#x6f;&#109;</a>: Sends an email with the subject “Disk Space Warning”.</li>
 </ul>
 <p><strong>Step 3: Set up log rotation for &#x2F;var&#x2F;log&#x2F;myapp.log</strong></p>
 <p>To set up log rotation for myapp.log, create or modify the logrotate configuration file for this log file. Here’s an example of a configuration that rotates the log every week, keeps 4 weeks of logs, and compresses old logs:</p>
@@ -285,7 +285,7 @@
 <li>awk ‘NR&#x3D;&#x3D;2 {print $5}’: Extracts the percentage usage from the df output.</li>
 <li>sed ‘s&#x2F;%&#x2F;&#x2F;‘: Removes the percent sign.</li>
 <li>if [ “$disk_usage” -gt 90 ]; then: Checks if the disk usage exceeds 90%.</li>
-<li>mail -s “Disk Space Warning” <a href="mailto:&#97;&#100;&#109;&#105;&#x6e;&#64;&#121;&#111;&#x75;&#x72;&#x64;&#x6f;&#x6d;&#97;&#105;&#x6e;&#46;&#x63;&#111;&#109;">&#97;&#100;&#109;&#105;&#x6e;&#64;&#121;&#111;&#x75;&#x72;&#x64;&#x6f;&#x6d;&#97;&#105;&#x6e;&#46;&#x63;&#111;&#109;</a>: Sends an email if usage exceeds 90%.</li>
+<li>mail -s “Disk Space Warning” <a href="mailto:&#97;&#x64;&#109;&#x69;&#x6e;&#x40;&#x79;&#x6f;&#x75;&#x72;&#100;&#111;&#109;&#97;&#105;&#110;&#x2e;&#x63;&#x6f;&#109;">&#97;&#x64;&#109;&#x69;&#x6e;&#x40;&#x79;&#x6f;&#x75;&#x72;&#100;&#111;&#109;&#97;&#105;&#110;&#x2e;&#x63;&#x6f;&#109;</a>: Sends an email if usage exceeds 90%.</li>
 </ul>
 <p>Make the script executable:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/check_disk_space.sh</span><br></pre></td></tr></table></figure>
