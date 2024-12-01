@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"xianzhan-yang.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Question: You are managing system performance on a Linux server. Your task is to:  Monitor real-time system resource usage (CPU, memory, disk I&#x2F;O) for one minute and save the output to a file nam">
+  <meta name="description" content="Question: You are managing a Linux server and need to perform a few common system administration tasks:  Create a new user named deploy with a home directory &#x2F;home&#x2F;deploy and set the shell t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux Practice - Day 3">
-<meta property="og:url" content="https://xianzhan-yang.github.io/2024/11/28/43/index.html">
+<meta property="og:title" content="Linux Practice - Day 6">
+<meta property="og:url" content="https://xianzhan-yang.github.io/2024/12/01/06/index.html">
 <meta property="og:site_name" content="Arch">
-<meta property="og:description" content="Question: You are managing system performance on a Linux server. Your task is to:  Monitor real-time system resource usage (CPU, memory, disk I&#x2F;O) for one minute and save the output to a file nam">
+<meta property="og:description" content="Question: You are managing a Linux server and need to perform a few common system administration tasks:  Create a new user named deploy with a home directory &#x2F;home&#x2F;deploy and set the shell t">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-28T08:39:43.000Z">
-<meta property="article:modified_time" content="2024-11-28T08:52:35.279Z">
+<meta property="article:published_time" content="2024-12-01T08:51:06.000Z">
+<meta property="article:modified_time" content="2024-12-01T09:07:07.414Z">
 <meta property="article:author" content="xianzhan-yang">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://xianzhan-yang.github.io/2024/11/28/43/">
+<link rel="canonical" href="https://xianzhan-yang.github.io/2024/12/01/06/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
 </script>
 <script type="text/javascript" src="/js/love.js"></script>
 
-  <title>Linux Practice - Day 3 | Arch</title>
+  <title>Linux Practice - Day 6 | Arch</title>
   
 
 
@@ -156,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://xianzhan-yang.github.io/2024/11/28/43/">
+    <link itemprop="mainEntityOfPage" href="https://xianzhan-yang.github.io/2024/12/01/06/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -169,7 +169,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Linux Practice - Day 3
+          Linux Practice - Day 6
         </h1>
 
         <div class="post-meta">
@@ -180,7 +180,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-11-28 16:39:43 / Modified: 16:52:35" itemprop="dateCreated datePublished" datetime="2024-11-28T16:39:43+08:00">2024-11-28</time>
+              <time title="Created: 2024-12-01 16:51:06 / Modified: 17:07:07" itemprop="dateCreated datePublished" datetime="2024-12-01T16:51:06+08:00">2024-12-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -204,80 +204,110 @@
 
       
         <p><strong>Question:</strong></p>
-<p>You are managing system performance on a Linux server. Your task is to:</p>
+<p>You are managing a Linux server and need to perform a few common system administration tasks:</p>
 <ol>
-<li><strong>Monitor real-time system resource usage</strong> (CPU, memory, disk I&#x2F;O) for one minute and save the output to a file named system_stats.log in your home directory.</li>
-<li><strong>Find the top 5 processes</strong> consuming the most memory and CPU and list them in the same log file.</li>
-<li><strong>Create a script</strong> named resource_monitor.sh that performs the above tasks and appends the results to system_stats.log each time it is run.</li>
-<li><strong>Set up a cron job</strong> to execute this script every 15 minutes.</li>
+<li><strong>Create a new user</strong> named deploy with a home directory &#x2F;home&#x2F;deploy and set the shell to &#x2F;bin&#x2F;bash.</li>
+<li><strong>Set a password</strong> for the deploy user and ensure the password is secure (at least 8 characters with a mix of uppercase, lowercase, and special characters).</li>
+<li><strong>Assign the deploy user to the sudo group</strong> to allow them to run administrative commands with sudo.</li>
+<li><strong>Configure the deploy user to have restricted access</strong>:<ul>
+<li>Set up a chroot environment, meaning the user should only have access to their home directory.</li>
+<li>Ensure the user cannot access system directories such as &#x2F;etc, &#x2F;bin, etc.</li>
+</ul>
+</li>
+<li><strong>Set up a cron job for the deploy user</strong> to run a script &#x2F;home&#x2F;deploy&#x2F;backup.sh every day at 2:00 AM.</li>
+<li><strong>Check if the deploy user can successfully run</strong> sudo and run a simple command like sudo ls &#x2F;root.</li>
 </ol>
-<p><strong>Hints:</strong></p>
+<p>Hints:</p>
 <ul>
-<li>Use tools like top, htop, vmstat, iostat, or sar for monitoring.</li>
-<li>Use ps, sort, and head to find processes consuming the most resources.</li>
-<li>Use crontab to schedule the script.</li>
+<li>Use useradd and passwd for user creation and password setting.</li>
+<li>Use usermod to add the user to the sudo group.</li>
+<li>Use chroot to restrict access for the user.</li>
+<li>Use crontab for scheduling tasks.</li>
+<li>Use sudo to test elevated privileges.</li>
 </ul>
 <span id="more"></span>
 
-<p><strong>Answer:</strong></p>
-<p><strong>Step 1: Monitor real-time system resource usage and save the output to system_stats.log</strong></p>
-<p>You can use vmstat or top for this task. Since top is interactive by default, we’ll use top in batch mode to get system statistics.</p>
-<p>Run top in batch mode to collect data for one minute and save the output to system_stats.log:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -b -n 60 -d 1 &gt;&gt; ~/system_stats.log</span><br></pre></td></tr></table></figure>
+<p><strong>Step 1: Create a new user named deploy with a home directory &#x2F;home&#x2F;deploy and set the shell to &#x2F;bin&#x2F;bash.</strong></p>
+<p>To create the user deploy, with a specified home directory and shell, use the useradd command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -m -d /home/deploy -s /bin/bash deploy</span><br></pre></td></tr></table></figure>
 
 <p>Explanation:</p>
 <ul>
-<li>-b: Batch mode (non-interactive).</li>
-<li>-n 60: Run for 60 iterations (1 minute, if the delay between iterations is 1 second).</li>
-<li>-d 1: Delay of 1 second between each iteration.</li>
-<li>&gt;&gt; ~&#x2F;system_stats.log: Append the output to system_stats.log in your home directory.</li>
+<li>-m: Creates the home directory for the user if it doesn’t exist.</li>
+<li>-d &#x2F;home&#x2F;deploy: Specifies the home directory for the user.</li>
+<li>-s &#x2F;bin&#x2F;bash: Sets the user’s default shell to &#x2F;bin&#x2F;bash.</li>
 </ul>
-<p><strong>Step 2: Find the top 5 processes consuming the most memory and CPU and list them in the same log file</strong></p>
-<p>You can use the ps command to find processes sorted by memory and CPU usage.</p>
-<p>For the top 5 processes by CPU usage:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux --sort=-%cpu | head -n 6 &gt;&gt; ~/system_stats.log</span><br></pre></td></tr></table></figure>
-
-<p>For the top 5 processes by memory usage:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux --sort=-%mem | head -n 6 &gt;&gt; ~/system_stats.log</span><br></pre></td></tr></table></figure>
+<p><strong>Step 2: Set a password for the deploy user and ensure the password is secure (at least 8 characters with a mix of uppercase, lowercase, and special characters).</strong></p>
+<p>To set the password for the deploy user, use the passwd command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd deploy</span><br></pre></td></tr></table></figure>
+<p>You’ll be prompted to enter and confirm a new password. Make sure it meets the security requirements (at least 8 characters, a mix of uppercase, lowercase, digits, and special characters).</p>
+<p><strong>Step 3: Assign the deploy user to the sudo group to allow them to run administrative commands with sudo.</strong></p>
+<p>To add the deploy user to the sudo group, use the usermod command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG sudo deploy</span><br></pre></td></tr></table></figure>
 
 <p>Explanation:</p>
 <ul>
-<li>ps aux: Lists all processes with detailed information.</li>
-<li>–sort&#x3D;-%cpu: Sort by CPU usage (descending).</li>
-<li>–sort&#x3D;-%mem: Sort by memory usage (descending).</li>
-<li>head -n 6: The first line is the header, so head -n 6 grabs the top 5 processes plus the header.</li>
-<li>&gt;&gt; ~&#x2F;system_stats.log: Appends the output to system_stats.log.</li>
+<li>-aG sudo: Adds the deploy user to the sudo group, allowing them to run commands with sudo privileges.</li>
 </ul>
-<p><strong>Step 3: Create a script named resource_monitor.sh</strong></p>
-<p>Create a new script called resource_monitor.sh:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/resource_monitor.sh</span><br></pre></td></tr></table></figure>
+<p><strong>Step 4: Configure the deploy user to have restricted access (chroot environment)</strong></p>
+<p>To restrict the deploy user to their home directory (creating a chroot jail), you’ll need to modify the SSH configuration and potentially create a limited environment for the user. Here’s a simplified approach:</p>
+<ol>
+<li>Edit the SSH configuration to enable a chroot environment for the deploy user.</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
 
-<p>Inside the script, add the following content:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># Log system stats</span><br><span class="line">top -b -n 60 -d 1 &gt;&gt; ~/system_stats.log</span><br><span class="line"></span><br><span class="line"># Log top 5 processes by CPU</span><br><span class="line">echo &quot;Top 5 processes by CPU:&quot; &gt;&gt; ~/system_stats.log</span><br><span class="line">ps aux --sort=-%cpu | head -n 6 &gt;&gt; ~/system_stats.log</span><br><span class="line"></span><br><span class="line"># Log top 5 processes by memory</span><br><span class="line">echo &quot;Top 5 processes by memory:&quot; &gt;&gt; ~/system_stats.log</span><br><span class="line">ps aux --sort=-%mem | head -n 6 &gt;&gt; ~/system_stats.log</span><br><span class="line"></span><br><span class="line"># Add a timestamp for each run</span><br><span class="line">echo &quot;Timestamp: $(date)&quot; &gt;&gt; ~/system_stats.log</span><br><span class="line">echo &quot;-------------------------&quot; &gt;&gt; ~/system_stats.log</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Add the following at the end of the file to restrict the deploy user to their home directory:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Match User deploy</span><br><span class="line">    ChrootDirectory /home/deploy</span><br><span class="line">    ForceCommand internal-sftp</span><br><span class="line">    AllowTcpForwarding no</span><br></pre></td></tr></table></figure>
+<p>Explanation:</p>
+<ul>
+<li>Match User deploy: This applies the configuration to the deploy user.</li>
+<li>ChrootDirectory &#x2F;home&#x2F;deploy: Restricts the deploy user’s file system access to &#x2F;home&#x2F;deploy.</li>
+<li>ForceCommand internal-sftp: Ensures that the deploy user can only use SFTP (secure file transfer) and not a shell.</li>
+<li>AllowTcpForwarding no: Prevents TCP forwarding for the deploy user.</li>
+</ul>
+<ol start="3">
+<li>Restart the SSH service to apply the changes:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure>
+
+<p>Now, the deploy user is restricted to their home directory and can only use SFTP (no shell access). You can further secure this setup by adjusting file permissions and ensuring the chroot directory is owned by root and the user’s files are placed inside it.</p>
+<p><strong>Step 5: Set up a cron job for the deploy user to run a script &#x2F;home&#x2F;deploy&#x2F;backup.sh every day at 2:00 AM.</strong></p>
+<p>To set up the cron job for the deploy user, you need to edit their crontab file:</p>
+<ol>
+<li>Switch to the deploy user’s crontab:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo crontab -u deploy -e</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Add the following line to run the script at 2:00 AM daily:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 2 * * * /home/deploy/backup.sh</span><br></pre></td></tr></table></figure>
 
 <p>Explanation:</p>
 <ul>
-<li>The script logs system stats (top 1-minute data) and the top 5 processes for CPU and memory.</li>
-<li>It adds a timestamp (date) for each execution and separates logs with a line (————————-).</li>
+<li>0 2 * * *: Runs the command at 2:00 AM every day.</li>
+<li>&#x2F;home&#x2F;deploy&#x2F;backup.sh: The path to the script to be executed.</li>
 </ul>
-<p>Save and close the script (Ctrl+O, Enter, Ctrl+X).</p>
-<p>Make the script executable:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/resource_monitor.sh</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Make sure the backup.sh script is executable:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /home/deploy/backup.sh</span><br></pre></td></tr></table></figure>
 
-<p><strong>Step 4: Set up a cron job to execute this script every 15 minutes</strong></p>
-<p>Edit the crontab to schedule the script:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+<p><strong>Step 6: Check if the deploy user can successfully run sudo and run a simple command like sudo ls &#x2F;root.</strong></p>
+<p>To test if the deploy user can run sudo, you can switch to the deploy user and try running a command with sudo:</p>
+<ol>
+<li>Switch to the deploy user:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su - deploy</span><br></pre></td></tr></table></figure>
 
-<p>Add the following line to run the script every 15 minutes:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/15 * * * * /bin/bash /home/yourusername/resource_monitor.sh</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Run a sudo command:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ls /root</span><br></pre></td></tr></table></figure>
 
-<p>Explanation:</p>
-<ul>
-<li>*&#x2F;15 * * * *: Runs the script every 15 minutes.</li>
-<li>Replace &#x2F;home&#x2F;yourusername&#x2F;resource_monitor.sh with the correct path to your script.</li>
-<li>Ensure that the script is executable and has the correct path.</li>
-</ul>
-<p>Save and exit the crontab (Ctrl+X, Y, Enter).</p>
+<p>If everything is configured correctly, the system will ask for the deploy user’s password. Upon successful authentication, the ls &#x2F;root command will list the contents of the &#x2F;root directory, demonstrating that deploy has sudo access.</p>
 
     </div>
 
@@ -293,13 +323,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/11/27/51/" rel="prev" title="Linux Practice - Day 2">
-      <i class="fa fa-chevron-left"></i> Linux Practice - Day 2
+    <a href="/2024/11/30/40/" rel="prev" title="Linux Practice - Day 5">
+      <i class="fa fa-chevron-left"></i> Linux Practice - Day 5
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/11/29/25/" rel="next" title="Linux Practice - Day 4">
-      Linux Practice - Day 4 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
