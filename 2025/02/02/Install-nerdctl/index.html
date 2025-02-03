@@ -28,7 +28,7 @@
 <meta property="og:description" content="Let’s install nerdctl.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-02-02T13:05:43.000Z">
-<meta property="article:modified_time" content="2025-02-03T12:22:36.740Z">
+<meta property="article:modified_time" content="2025-02-03T14:16:28.954Z">
 <meta property="article:author" content="xianzhan-yang">
 <meta name="twitter:card" content="summary">
 
@@ -112,7 +112,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Containerd"><span class="nav-number">1.</span> <span class="nav-text">Containerd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-system"><span class="nav-number">1.1.</span> <span class="nav-text">Update system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-packages"><span class="nav-number">1.2.</span> <span class="nav-text">Basic packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-containerd-repo"><span class="nav-number">1.3.</span> <span class="nav-text">Add containerd repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-containerd"><span class="nav-number">1.4.</span> <span class="nav-text">Install containerd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enable-Start-containerd"><span class="nav-number">1.5.</span> <span class="nav-text">Enable&amp;Start containerd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-CNI"><span class="nav-number">1.6.</span> <span class="nav-text">Install CNI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nerdctl"><span class="nav-number">2.</span> <span class="nav-text">Nerdctl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-nerdctl"><span class="nav-number">2.1.</span> <span class="nav-text">Install nerdctl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-rootlesskit"><span class="nav-number">2.2.</span> <span class="nav-text">Install rootlesskit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-slirp4netns"><span class="nav-number">2.3.</span> <span class="nav-text">Install slirp4netns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-buildkit"><span class="nav-number">2.4.</span> <span class="nav-text">Install buildkit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Launch-rootless-containerd"><span class="nav-number">2.5.</span> <span class="nav-text">Launch rootless containerd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Launch-buildkitd-containerd"><span class="nav-number">2.6.</span> <span class="nav-text">Launch buildkitd containerd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Containerd"><span class="nav-number">1.</span> <span class="nav-text">Containerd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-system"><span class="nav-number">1.1.</span> <span class="nav-text">Update system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-packages"><span class="nav-number">1.2.</span> <span class="nav-text">Basic packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-containerd-repo"><span class="nav-number">1.3.</span> <span class="nav-text">Add containerd repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-containerd"><span class="nav-number">1.4.</span> <span class="nav-text">Install containerd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enable-Start-containerd"><span class="nav-number">1.5.</span> <span class="nav-text">Enable&amp;Start containerd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-CNI"><span class="nav-number">1.6.</span> <span class="nav-text">Install CNI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nerdctl"><span class="nav-number">2.</span> <span class="nav-text">Nerdctl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-nerdctl"><span class="nav-number">2.1.</span> <span class="nav-text">Install nerdctl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-rootlesskit"><span class="nav-number">2.2.</span> <span class="nav-text">Install rootlesskit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-slirp4netns"><span class="nav-number">2.3.</span> <span class="nav-text">Install slirp4netns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-buildkit"><span class="nav-number">2.4.</span> <span class="nav-text">Install buildkit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Launch-rootless-containerd"><span class="nav-number">2.5.</span> <span class="nav-text">Launch rootless containerd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Launch-buildkitd-containerd"><span class="nav-number">2.6.</span> <span class="nav-text">Launch buildkitd containerd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -201,7 +201,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-03 20:22:36" itemprop="dateModified" datetime="2025-02-03T20:22:36+08:00">2025-02-03</time>
+      <time title="Modified: 2025-02-03 22:16:28" itemprop="dateModified" datetime="2025-02-03T22:16:28+08:00">2025-02-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -209,7 +209,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/containerd/" itemprop="url" rel="index"><span itemprop="name">containerd</span></a>
+          <a href="/categories/container/" itemprop="url" rel="index"><span itemprop="name">container</span></a>
         </span>
     </span>
 
@@ -257,6 +257,32 @@
 
 <h3 id="Launch-buildkitd-containerd"><a href="#Launch-buildkitd-containerd" class="headerlink" title="Launch buildkitd containerd"></a>Launch buildkitd containerd</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">containerd-rootless-setuptool.sh install-buildkit</span><br></pre></td></tr></table></figure>
 
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ul>
+<li>Containerd: 2 ways to install <ul>
+<li>From the official binaries<ul>
+<li>Installing containerd</li>
+<li>Installing runc</li>
+<li>Installing cni plugins</li>
+</ul>
+</li>
+<li>From apt-get or dnf<ul>
+<li>Installing containerd (include runc)</li>
+<li>Installing cni plugins</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Nerdctl: 1 way to install<ul>
+<li>From the official binaries<ul>
+<li>Installing nerdctl</li>
+<li>Installing rootlesskit</li>
+<li>Installing slirp4netns </li>
+<li>Installing buildkit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li>Containerd: <a target="_blank" rel="noopener" href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md">https://github.com/containerd/containerd/blob/main/docs/getting-started.md</a></li>
 <li>CNI: <a target="_blank" rel="noopener" href="https://github.com/containernetworking/plugins">https://github.com/containernetworking/plugins</a></li>
@@ -282,6 +308,15 @@
 
         
 
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/02/03/Install-docker/" rel="next" title="Install docker">
+                  Install docker <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
